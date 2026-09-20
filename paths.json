@@ -1,9 +1,9 @@
 {
   "mappings": [
-    "/:/"
+   "/content/taqa/en:/"
   ],
   "includes": [
-    "/content/",
-    "/content/dam/"
+    "/content/taqa",
+    "/content/dam/taqa"
   ]
 }
