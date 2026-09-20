@@ -1,0 +1,139 @@
+/* carousel-tips: single-tile promo carousel (icon + heading + description +
+   LEARN MORE pill) with dot pagination, on a light-lavender panel.
+   Values extracted from taqadistribution.com computed styles. */
+
+.carousel-tips {
+  position: relative;
+  box-sizing: border-box;
+  padding: 24px;
+  background-color: var(--taqa-lavender);
+}
+
+/* Slides track: one tile visible at a time, horizontal scroll-snap */
+.carousel-tips .carousel-tips-slides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow-x: hidden;
+}
+
+.carousel-tips .carousel-tips-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  box-sizing: border-box;
+  padding: 8px 16px 16px;
+}
+
+/* Icon */
+.carousel-tips .carousel-tips-slide-icon {
+  margin: 24px 0;
+}
+
+.carousel-tips .carousel-tips-slide-icon img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+/* Text + link column */
+.carousel-tips .carousel-tips-slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 340px;
+  margin: 0;
+}
+
+/* Heading (first paragraph) */
+.carousel-tips .carousel-tips-slide-content p:first-child {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-color);
+}
+
+/* Description (second paragraph) */
+.carousel-tips .carousel-tips-slide-content p:nth-child(2) {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* LEARN MORE pill link */
+.carousel-tips .carousel-tips-slide-content p:last-child {
+  margin: 24px 0 0;
+}
+
+.carousel-tips .carousel-tips-slide-content a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 25px;
+  border: 1px solid var(--taqa-purple);
+  border-radius: 80px;
+  background-color: var(--taqa-purple);
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 13px;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.carousel-tips .carousel-tips-slide-content a:hover,
+.carousel-tips .carousel-tips-slide-content a:focus-visible {
+  background-color: var(--taqa-navy);
+  border-color: var(--taqa-navy);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Dot pagination */
+.carousel-tips .carousel-tips-slide-indicators {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0 16px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.carousel-tips .carousel-tips-slide-indicator button {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #757791;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.carousel-tips .carousel-tips-slide-indicator button:hover {
+  background-color: var(--taqa-purple);
+}
+
+.carousel-tips .carousel-tips-slide-indicator button[disabled] {
+  background-color: var(--text-color);
+  cursor: default;
+}
+
+@media (width >= 900px) {
+  .carousel-tips {
+    padding: 40px;
+  }
+}

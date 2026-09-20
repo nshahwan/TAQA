@@ -1,0 +1,38 @@
+{
+  "variantName": "cards-usp",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-08T13:23:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.airarabia.com/en/plan/flying-with-us/flying-with-convenience",
+    "originPage": "Flying with Convenience marketing landing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "feature",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + title + description + optional CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "USP / feature grids with an image, title, description and optional link",
+      "check-in options, onboard features, destination/CTA card rows"
+    ],
+    "notSuitableFor": [
+      "text-only cards without images",
+      "single featured promo units (use a columns variant)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en/plan/flying-with-us/flying-with-convenience"],
+    "reuseCount": 3,
+    "lastUsed": "2026-07-08T13:23:00.000Z",
+    "note": "Used by sections 5 (check-in), 6 (onboard comfort), and 8 (bottom CTA) on this page."
+  }
+}

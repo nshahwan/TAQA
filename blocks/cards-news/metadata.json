@@ -1,0 +1,38 @@
+{
+  "variantName": "cards-news",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-14T12:46:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.nileair.com/",
+    "originPage": "Nile Air home landing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "news",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "cover image + heading + date + summary",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "news / article / press-release card grids (cover image + headline + date + summary)",
+      "blog listing rows where the whole card is a link"
+    ],
+    "notSuitableFor": [
+      "icon-only quick-link tiles (use cards-quicklink)",
+      "text-only tiles without imagery (use cards-fare)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-14T12:46:00.000Z",
+    "note": "Used by home 'News Room' section (rc4c5): 2 news cards with cover image, headline, date, summary."
+  }
+}

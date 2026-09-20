@@ -1,0 +1,7 @@
+[2026-07-08T14:17:34.959Z] 🔵 [SCRIPT:detect-header-rows] [START] detect-header-rows.js invoked — url=https://www.airarabia.com/en/plan/flying-with-us/flying-with-convenience, validationDir=migration-work/navigation-validation
+[2026-07-08T14:17:38.778Z] 🚫 [SCRIPT:detect-header-rows] [BLOCK] FAILED — no header found
+[2026-07-08T14:19:46.387Z] 🔵 [SCRIPT:validate-nav-content] [START] validate-nav-content.js invoked — navFile=content/nav.plain.html, validationDir=migration-work/navigation-validation
+[2026-07-08T14:20:25.163Z] 🔵 [SCRIPT:validate-nav-content] [START] validate-nav-content.js invoked — navFile=content/nav.plain.html, validationDir=migration-work/navigation-validation
+[2026-07-08T14:20:25.193Z] ✅ [SCRIPT:validate-nav-content] [PASS] PASSED — 1 requirement(s), 1 ref(s), 1 on disk (exist + size>0)
+[2026-07-08T14:44:17.384Z] 🔵 [SCRIPT:validate-nav-content] [START] validate-nav-content.js invoked — navFile=content/nav.plain.html, validationDir=migration-work/navigation-validation
+[2026-07-08T14:44:17.406Z] 🚫 [SCRIPT:validate-nav-content] [BLOCK] FAILED — 3 failure(s): Image path uses absolute path (leading /) — validation resolves to filesystem root, not workspace: /content/images/airarabia-logo.png; Image path uses absolute path (leading /) — validation resolves to filesystem root, not workspace: /content/images/ae-flag.svg; Image path uses absolute path (leading /) — validation resolves to filesystem root, not workspace: /content/images/airrewards-icon.svg

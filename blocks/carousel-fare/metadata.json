@@ -1,0 +1,38 @@
+{
+  "variantName": "carousel-fare",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-07-14T12:46:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.nileair.com/",
+    "originPage": "Nile Air home landing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "promo",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + heading + fare-label + price",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "rotating carousels of small promotional fare/offer tiles (destination photo + heading + label + price)",
+      "promotions strips that scroll horizontally"
+    ],
+    "notSuitableFor": [
+      "full-bleed hero banners (use carousel-hero)",
+      "static non-rotating card grids (use a cards variant)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-14T12:46:00.000Z",
+    "note": "Used by home 'Our Promotions' carousel (rc4c4): 6 fare cards with destination image, heading, fare label, price."
+  }
+}

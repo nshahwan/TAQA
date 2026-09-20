@@ -1,0 +1,112 @@
+.cards-usp > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px 22px;
+}
+
+@media (width >= 900px) {
+  .cards-usp > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cards-usp > ul > li {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+/* image on top with rounded corners */
+.cards-usp .cards-usp-card-image {
+  margin: 0;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cards-usp .cards-usp-card-image picture,
+.cards-usp .cards-usp-card-image img {
+  display: block;
+  width: 100%;
+}
+
+.cards-usp .cards-usp-card-image img {
+  aspect-ratio: 360 / 170;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* text below the image */
+.cards-usp .cards-usp-card-body {
+  margin: 0;
+  padding: 0;
+}
+
+.cards-usp .cards-usp-card-body h3 {
+  margin: 11px 0 0;
+  padding: 0;
+  font-family: var(--heading-font-family);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 28.6px;
+  color: var(--text-color);
+}
+
+.cards-usp .cards-usp-card-body p {
+  margin: 7px 0 0;
+  padding: 0;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21.28px;
+  color: var(--text-color);
+}
+
+/* red call-to-action link with trailing chevron (source has a plain link, not a button) */
+.cards-usp .cards-usp-card-body p:has(> a:only-child) {
+  margin-top: 10px;
+}
+
+.cards-usp .cards-usp-card-body a,
+.cards-usp .cards-usp-card-body a.button:any-link {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21.92px;
+  color: var(--link-color);
+  text-decoration: none;
+  white-space: normal;
+}
+
+.cards-usp .cards-usp-card-body a::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 10px;
+  border-right: 1.5px solid var(--link-color);
+  border-bottom: 1.5px solid var(--link-color);
+  transform: rotate(-45deg);
+}
+
+.cards-usp .cards-usp-card-body a:hover {
+  color: var(--link-hover-color);
+  text-decoration: none;
+}
+
+.cards-usp .cards-usp-card-body a:hover::after {
+  border-color: var(--link-hover-color);
+}

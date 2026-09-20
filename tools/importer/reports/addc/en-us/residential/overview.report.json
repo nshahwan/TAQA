@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://taqadistribution.com/addc/en-us/residential/overview",
+  "path": "addc/en-us/residential/overview",
+  "timestamp": "2026-09-17T05:56:42.554Z",
+  "title": "TAQA Distribution",
+  "template": "residential",
+  "blocks": [
+    "hero-residential",
+    "cards-usp-overlay",
+    "cards-usp-overlay",
+    "cards-news"
+  ]
+}

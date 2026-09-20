@@ -1,0 +1,11 @@
+# Universal Editor (crosswalk) content mount.
+# Content is authored in AEM as a Cloud Service and delivered to Edge Delivery
+# through the franklin.delivery endpoint of the author environment below.
+#
+# org/repo below must match the GitHub org/repo this code lives in
+# (the same org/repo you connect in the AEM Code Sync GitHub app).
+mountpoints:
+  /:
+    url: https://author-p208666-e2179906.adobeaemcloud.com/bin/franklin.delivery/nshahwan/TAQA/main
+    type: markup
+    suffix: .html

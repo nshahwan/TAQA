@@ -1,0 +1,121 @@
+/* columns-promo — "Block Your Ticket" horizontal promo card
+ * Source: airarabia.com flying-with-convenience
+ * White card, 1px #e8e8e8 border, 8px radius, icon + text left, red CTA right.
+ */
+
+/* "Book Now" solid red button — override global button reset within this block.
+   Placed first so lower-specificity block selectors below win by source order. */
+main .columns-promo a:any-link,
+main .columns-promo a.button:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 150px;
+  margin: 0;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 8px;
+  background: rgb(255 22 79);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+main .columns-promo a:any-link:hover {
+  background: rgb(194 0 65);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* The block row is the bordered card */
+.columns-promo > div {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px 28px;
+  border: 1px solid rgb(232 232 232);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+/* Cell 1: icon + text block, side by side */
+.columns-promo > div > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Icon (wrapped in a <p> by EDS, tagged by JS) */
+.columns-promo .columns-promo-icon {
+  flex: 0 0 auto;
+  margin: 0;
+  line-height: 0;
+}
+
+.columns-promo .columns-promo-icon picture,
+.columns-promo .columns-promo-icon img {
+  display: block;
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+/* Text block: heading + paragraphs stacked */
+.columns-promo .columns-promo-text {
+  flex: 1 1 auto;
+}
+
+.columns-promo .columns-promo-text h3 {
+  margin: 0 0 8px;
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 28.75px;
+  color: rgb(38 55 70);
+}
+
+.columns-promo .columns-promo-text p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  color: rgb(38 55 70);
+}
+
+.columns-promo .columns-promo-text p + p {
+  margin-top: 2px;
+}
+
+/* Cell 2: the CTA. EDS wraps the link in a <p>. */
+.columns-promo > div > div:last-child {
+  display: flex;
+  align-items: center;
+}
+
+.columns-promo > div > div:last-child p {
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  .columns-promo > div {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  .columns-promo > div > div:first-child {
+    flex: 1 1 auto;
+  }
+
+  .columns-promo > div > div:last-child {
+    flex: 0 0 auto;
+  }
+}

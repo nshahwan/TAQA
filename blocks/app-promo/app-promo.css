@@ -1,0 +1,126 @@
+/* ===== app-promo band =====
+   Residential help-and-support pages carry an app-download promo beside the
+   energy-saving-tips carousel: a teal-gradient card with a "POWERING
+   COMMUNITIES" eyebrow, a two-line headline, a short line of copy, and the two
+   app-store badges. Mobile-first; the source fades the teal from solid on the
+   left to transparent on the right. */
+
+.app-promo.block {
+  box-sizing: border-box;
+  padding: 40px 32px;
+  border-radius: 8px;
+  background-image: linear-gradient(270deg, rgb(10 179 161 / 0%), var(--taqa-teal, #0ab3a1));
+  color: #fff;
+}
+
+.app-promo.block > div {
+  margin: 0;
+}
+
+.app-promo.block > div > div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* eyebrow: POWERING / COMMUNITIES — two stacked bold lines (role-tagged in JS,
+   so this matches regardless of whether the source used <p> or a heading tag) */
+.app-promo .app-promo-eyebrow {
+  margin: 0;
+  font-family: var(--heading-font-family, inherit);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+}
+
+/* headline block: app-features line + the larger two-line title */
+.app-promo .app-promo-title {
+  margin: 0;
+  font-family: var(--heading-font-family, inherit);
+  font-weight: 600;
+  line-height: 1.25;
+  color: #fff;
+}
+
+/* first title line ("AN ENHANCED APP…") is the smaller lead-in */
+.app-promo .app-promo-title:nth-of-type(3) {
+  margin-top: 12px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* the main title lines are larger and lighter */
+.app-promo .app-promo-title:nth-of-type(n + 4) {
+  font-size: 26px;
+  font-weight: 400;
+}
+
+/* "Upgrade to a new experience" — a plain paragraph after the title lines */
+.app-promo p:not(.app-promo-badges, .app-promo-eyebrow, .app-promo-title) {
+  margin: 8px 0 0;
+  font-size: 15px;
+  color: #fff;
+}
+
+/* app-store badges row */
+.app-promo .app-promo-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin: 12px 0 0;
+}
+
+.app-promo .app-promo-badges a {
+  display: inline-block;
+  transition: opacity 0.2s ease;
+}
+
+.app-promo .app-promo-badges a:hover {
+  opacity: 0.85;
+}
+
+.app-promo .app-promo-badges img {
+  height: 44px;
+  width: auto;
+}
+
+/* ===== two-column row: app-promo beside the energy-saving-tips carousel ===== */
+.app-promo-row > .app-promo-wrapper {
+  margin: 0;
+}
+
+.app-promo-tips {
+  min-width: 0;
+}
+
+/* ===== DESKTOP (>= 900px) ===== */
+@media (width >= 900px) {
+  .app-promo-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  .app-promo.block {
+    height: 100%;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .app-promo .app-promo-title:nth-of-type(3) {
+    font-size: 22px;
+  }
+
+  .app-promo .app-promo-title:nth-of-type(n + 4) {
+    font-size: 33px;
+  }
+
+  .app-promo .app-promo-badges img {
+    height: 48px;
+  }
+}

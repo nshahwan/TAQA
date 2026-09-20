@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "index": 0,
+      "alignmentGroups": ["brand-left", "utility-right"],
+      "spacing": "space-between",
+      "backgroundDifference": false,
+      "elements": ["logo", "login-link", "language-selector", "airrewards-link"],
+      "hasImages": true,
+      "hasHoverBehavior": false,
+      "hasClickBehavior": true,
+      "hasMegamenuInRow": false,
+      "hasHamburgerIcon": true,
+      "hamburgerIconSelector": ".pd001-header-burger",
+      "hamburgerClickBehavior": "opens mobile drawer",
+      "hamburgerHoverEffect": null,
+      "hamburgerAnimation": "class-toggle to cross",
+      "hasSearchForm": false,
+      "hasLocaleSelector": true,
+      "localeSelectorDetails": {
+        "selectorType": "language-dropdown",
+        "triggerElement": "en / English",
+        "triggerBehavior": "click",
+        "hasFlags": false,
+        "dropdownLayout": "vertical-list",
+        "position": "utility-row-right"
+      }
+    },
+    {
+      "index": 1,
+      "alignmentGroups": ["main-nav"],
+      "spacing": "flex-start",
+      "backgroundDifference": false,
+      "elements": ["nav-plan", "nav-manage", "nav-checkin", "nav-destinations", "nav-help"],
+      "hasImages": false,
+      "hasHoverBehavior": true,
+      "hasClickBehavior": true,
+      "hasMegamenuInRow": true,
+      "hasSearchForm": false,
+      "hasLocaleSelector": false
+    }
+  ],
+  "confidence": 0.9,
+  "uncertainty": false,
+  "notes": "Mapped from authenticated full-browser session. Main nav items each open a dropdown list of sub-links. Utility row has logo (left), and login/language/AirRewards (right)."
+}

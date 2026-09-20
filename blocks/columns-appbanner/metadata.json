@@ -1,0 +1,38 @@
+{
+  "variantName": "columns-appbanner",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-07-14T12:46:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.nileair.com/",
+    "originPage": "Nile Air home landing page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "promo",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + eyebrow + heading + app-store badge links",
+    "buttonCount": 2,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "app-download / promotional banners with a large image on one side and heading + store-badge CTAs on the other",
+      "single full-width callout banners with a background/feature image"
+    ],
+    "notSuitableFor": [
+      "small icon-led promo callouts (use columns-promo)",
+      "repeating card grids (use a cards variant)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-14T12:46:00.000Z",
+    "note": "Used by home app-download banner (rc4c6): background image + eyebrow + headline + Google Play / App Store badge links."
+  }
+}

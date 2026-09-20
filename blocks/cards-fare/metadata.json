@@ -1,0 +1,38 @@
+{
+  "variantName": "cards-fare",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-08T13:23:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.airarabia.com/en/plan/flying-with-us/flying-with-convenience",
+    "originPage": "Flying with Convenience marketing landing page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "feature",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "title + description",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "text-only bordered card grids (title + description, no images)",
+      "fare / plan / tier comparison tiles without imagery"
+    ],
+    "notSuitableFor": [
+      "cards that include an image (use cards-usp)",
+      "single featured promo units (use a columns variant)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en/plan/flying-with-us/flying-with-convenience"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-08T13:23:00.000Z",
+    "note": "Used by section 4 (Fare options: Basic / Ultimate / Value Fare). Uses the 'Cards (no images)' 1-column table structure."
+  }
+}

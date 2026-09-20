@@ -1,0 +1,38 @@
+{
+  "variantName": "columns-newsletter",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-07-14T12:46:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.nileair.com/",
+    "originPage": "Nile Air home landing page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "signup",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "heading + text | email form",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "newsletter / email signup rows laid out as heading+text on one side and an email input + submit button on the other",
+      "simple side-by-side call-to-subscribe sections"
+    ],
+    "notSuitableFor": [
+      "image-led promo banners (use columns-appbanner)",
+      "icon-led callout promos (use columns-promo)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-14T12:46:00.000Z",
+    "note": "Used by home newsletter signup (rc4c8): heading + text beside an email input and Subscribe button."
+  }
+}

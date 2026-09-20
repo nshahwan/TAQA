@@ -1,0 +1,201 @@
+/* carousel-fare: multi-item horizontal track of compact promotion fare cards.
+   Design extracted from nileair.com .promotions_slide.owl-carousel .sing_promt */
+
+.carousel-fare {
+  --fare-card-bg: rgb(246 247 249);
+  --fare-radius: 25px;
+  --fare-gap: 30px;
+  --fare-navy: rgb(22 40 68);
+  --fare-ink: rgb(56 70 82);
+
+  position: relative;
+  margin: 0;
+}
+
+.carousel-fare .carousel-fare-slides-container {
+  position: relative;
+}
+
+.carousel-fare .carousel-fare-slides,
+.carousel-fare .carousel-fare-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* horizontally scrolling multi-item track */
+.carousel-fare .carousel-fare-slides {
+  display: flex;
+  gap: var(--fare-gap);
+  padding-bottom: 8px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll clip;
+}
+
+.carousel-fare .carousel-fare-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* compact fare card */
+.carousel-fare .carousel-fare-slide {
+  flex: 0 0 78%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  width: auto;
+  overflow: hidden;
+  background-color: var(--fare-card-bg);
+  border-radius: var(--fare-radius);
+}
+
+/* image fills top of card with rounded top corners */
+.carousel-fare .carousel-fare-slide .carousel-fare-slide-image {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-fare .carousel-fare-slide .carousel-fare-slide-image picture {
+  display: block;
+}
+
+.carousel-fare .carousel-fare-slide .carousel-fare-slide-image picture > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1124 / 1202;
+  object-fit: cover;
+  border-radius: var(--fare-radius) var(--fare-radius) 0 0;
+}
+
+/* card body */
+.carousel-fare .carousel-fare-slide .carousel-fare-slide-content {
+  flex: 1;
+  padding: 30px;
+  color: var(--fare-ink);
+  background-color: var(--fare-card-bg);
+}
+
+.carousel-fare .carousel-fare-slide .carousel-fare-slide-content h3 {
+  margin: 0 0 5px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--fare-ink);
+}
+
+.carousel-fare .carousel-fare-slide .carousel-fare-slide-content p {
+  margin: 0 0 15px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.17;
+  color: var(--fare-ink);
+}
+
+.carousel-fare .carousel-fare-slide .carousel-fare-slide-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* indicators (dots) */
+.carousel-fare .carousel-fare-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 12px;
+  padding: 16px 12px 0;
+  line-height: 0;
+}
+
+.carousel-fare .carousel-fare-slide-indicator button {
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: #cfd4da;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.carousel-fare .carousel-fare-slide-indicator button:disabled,
+.carousel-fare .carousel-fare-slide-indicator button:hover,
+.carousel-fare .carousel-fare-slide-indicator button:focus-visible {
+  background-color: var(--fare-navy);
+}
+
+/* prev/next controls: white rounded squares with soft shadow */
+.carousel-fare .carousel-fare-navigation-buttons {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-fare .carousel-fare-navigation-buttons button {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 15px;
+  background-color: rgb(255 255 255);
+  box-shadow: rgb(0 0 0 / 10%) 0 24px 50px 0;
+  color: var(--fare-navy);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: box-shadow 0.2s, background-color 0.2s;
+}
+
+.carousel-fare .carousel-fare-navigation-buttons button:hover,
+.carousel-fare .carousel-fare-navigation-buttons button:focus-visible {
+  background-color: rgb(255 255 255);
+  box-shadow: rgb(0 0 0 / 18%) 0 12px 30px 0;
+}
+
+/* chevron arrows */
+.carousel-fare .carousel-fare-navigation-buttons button::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  width: 11px;
+  height: 11px;
+  border: 2px solid currentcolor;
+  border-bottom: 0;
+  border-left: 0;
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel-fare .carousel-fare-navigation-buttons button.slide-next::after {
+  left: calc(50% - 2px);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+@media (width >= 600px) {
+  .carousel-fare .carousel-fare-slide {
+    flex-basis: calc((100% - var(--fare-gap)) / 2);
+  }
+}
+
+@media (width >= 900px) {
+  .carousel-fare .carousel-fare-slide {
+    flex-basis: calc((100% - (2 * var(--fare-gap))) / 3);
+  }
+}
+
+@media (width >= 1200px) {
+  .carousel-fare .carousel-fare-slide {
+    flex-basis: calc((100% - (3 * var(--fare-gap))) / 4);
+  }
+}

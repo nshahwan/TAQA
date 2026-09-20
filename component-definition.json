@@ -1,0 +1,658 @@
+{
+  "groups": [
+    {
+      "title": "Default Content",
+      "id": "default",
+      "components": [
+        {
+          "title": "Text",
+          "id": "text",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/text/v1/text",
+                "template": {}
+              }
+            }
+          }
+        },
+        {
+          "title": "Title",
+          "id": "title",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/title/v1/title",
+                "template": {
+                  "model": "title"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Image",
+          "id": "image",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/image/v1/image",
+                "template": {}
+              }
+            }
+          }
+        },
+        {
+          "title": "Button",
+          "id": "button",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/button/v1/button",
+                "template": {
+                  "model": "button"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Sections",
+      "id": "sections",
+      "components": [
+        {
+          "title": "Section",
+          "id": "section",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/section/v1/section",
+                "template": {
+                  "model": "section"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Blocks",
+      "id": "blocks",
+      "components": [
+        {
+          "title": "Accordion / FAQ",
+          "id": "accordion-faq",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Accordion Faq",
+                  "filter": "accordion-faq"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "FAQ Item",
+          "id": "accordion-faq-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "FAQ Item",
+                  "model": "accordion-faq-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "App Promo Band",
+          "id": "app-promo",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "App Promo",
+                  "model": "app-promo"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Fare Cards",
+          "id": "cards-fare",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards Fare",
+                  "filter": "cards-fare"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Fare Card",
+          "id": "cards-fare-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Fare Card",
+                  "model": "cards-fare-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "News Cards",
+          "id": "cards-news",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards News",
+                  "filter": "cards-news"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "News Card",
+          "id": "cards-news-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "News Card",
+                  "model": "cards-news-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Quicklink Cards",
+          "id": "cards-quicklink",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards Quicklink",
+                  "filter": "cards-quicklink"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Quicklink Card",
+          "id": "cards-quicklink-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Quicklink Card",
+                  "model": "cards-quicklink-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Support Cards",
+          "id": "cards-support",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards Support",
+                  "filter": "cards-support"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Support Card",
+          "id": "cards-support-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Support Card",
+                  "model": "cards-support-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "USP Overlay Cards",
+          "id": "cards-usp-overlay",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards Usp Overlay",
+                  "filter": "cards-usp-overlay"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "USP Overlay Card",
+          "id": "cards-usp-overlay-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "USP Overlay Card",
+                  "model": "cards-usp-overlay-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "USP Cards",
+          "id": "cards-usp",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards Usp",
+                  "filter": "cards-usp"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "USP Card",
+          "id": "cards-usp-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "USP Card",
+                  "model": "cards-usp-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Cards",
+          "id": "cards",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards",
+                  "filter": "cards"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Card",
+          "id": "cards-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Card",
+                  "model": "cards-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Fare Carousel",
+          "id": "carousel-fare",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Carousel Fare",
+                  "filter": "carousel-fare"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Fare Slide",
+          "id": "carousel-fare-slide",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Fare Slide",
+                  "model": "carousel-fare-slide"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Hero Carousel",
+          "id": "carousel-hero",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Carousel Hero",
+                  "filter": "carousel-hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Hero Slide",
+          "id": "carousel-hero-slide",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Hero Slide",
+                  "model": "carousel-hero-slide"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Tips Carousel",
+          "id": "carousel-tips",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Carousel Tips",
+                  "filter": "carousel-tips"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Tip Slide",
+          "id": "carousel-tips-slide",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Tip Slide",
+                  "model": "carousel-tips-slide"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "App Banner Columns",
+          "id": "columns-appbanner",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Columns Appbanner",
+                  "filter": "columns-appbanner"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "App Banner Column",
+          "id": "columns-appbanner-col",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "App Banner Column",
+                  "model": "columns-appbanner-col"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Newsletter Columns",
+          "id": "columns-newsletter",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Columns Newsletter",
+                  "filter": "columns-newsletter"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Newsletter Column",
+          "id": "columns-newsletter-col",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Newsletter Column",
+                  "model": "columns-newsletter-col"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Promo Columns",
+          "id": "columns-promo",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Columns Promo",
+                  "filter": "columns-promo"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Promo Column",
+          "id": "columns-promo-col",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Promo Column",
+                  "model": "columns-promo-col"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Columns",
+          "id": "columns",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/columns/v1/columns",
+                "template": {
+                  "columns": "2",
+                  "rows": "1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Contact Form",
+          "id": "form-contact",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Form Contact",
+                  "filter": "form-contact"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Form Field",
+          "id": "form-contact-field",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Form Field",
+                  "model": "form-contact-field"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Fragment",
+          "id": "fragment",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Fragment",
+                  "model": "fragment"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Hero — Residential",
+          "id": "hero-residential",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Hero Residential",
+                  "model": "hero-residential"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Hero — Support",
+          "id": "hero-support",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Hero Support",
+                  "model": "hero-support"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Hero",
+          "id": "hero",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Hero",
+                  "model": "hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Table",
+          "id": "table",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Table",
+                  "model": "table"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Widget",
+          "id": "widget",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Widget",
+                  "model": "widget"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

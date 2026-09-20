@@ -1,0 +1,118 @@
+/* Form Contact block — visual design migrated from nileair.com #contact-us */
+
+.form-contact .form-contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+/* field group — one per row (name, subject, email, phone, message) */
+.form-contact .form-contact-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form-contact .form-contact-label {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: rgb(51 63 81);
+}
+
+.form-contact .form-contact-control {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px 12px;
+  border: 1.33px solid rgb(213 218 225);
+  border-radius: 8px;
+  background: rgb(255 255 255);
+  font: inherit;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgb(33 37 41);
+  box-shadow: rgb(0 0 0 / 5%) 0 1px 2px 0;
+}
+
+.form-contact select.form-contact-control {
+  border: 1.33px solid rgb(222 226 230);
+  border-radius: 6px;
+  padding-right: 36px;
+  box-shadow: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 12px;
+}
+
+.form-contact textarea.form-contact-control {
+  min-height: 220px;
+  resize: vertical;
+}
+
+.form-contact .form-contact-control:focus {
+  outline: none;
+  border-color: rgb(196 175 125);
+  box-shadow: rgb(196 175 125 / 25%) 0 0 0 3px;
+}
+
+/* Send button — brand gold, full width, uppercase */
+.form-contact .form-contact-submit,
+.form-contact button.form-contact-submit.button {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 15px 30px;
+  border: 0;
+  border-radius: 6px;
+  background-color: rgb(196 175 125);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(255 255 255);
+  cursor: pointer;
+}
+
+.form-contact button.form-contact-submit.button:hover,
+.form-contact button.form-contact-submit.button:focus-visible {
+  background-color: rgb(179 158 108);
+  border-color: transparent;
+  color: rgb(255 255 255);
+}
+
+.form-contact .form-contact-message {
+  margin-top: 12px;
+}
+
+/* Email + Mobile side by side from tablet up */
+@media (width >= 600px) {
+  .form-contact .form-contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    align-items: start;
+  }
+
+  /* full-width fields span both columns */
+  .form-contact .form-contact-field:nth-of-type(1),  /* Name */
+  .form-contact .form-contact-field:nth-of-type(2),  /* Subject */
+  .form-contact .form-contact-field:nth-of-type(5),  /* Message */
+  .form-contact .form-contact-submit,
+  .form-contact .form-contact-message {
+    grid-column: 1 / -1;
+  }
+
+  /* Email (3rd) and Mobile (4th) each take one column */
+  .form-contact .form-contact-field:nth-of-type(3) {
+    grid-column: 1 / 2;
+  }
+
+  .form-contact .form-contact-field:nth-of-type(4) {
+    grid-column: 2 / 3;
+  }
+}

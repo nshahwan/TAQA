@@ -1,0 +1,78 @@
+/* hero-support: page-intro hero with an angled photographic banner above
+   an eyebrow / heading / intro content band. The angled edges and the
+   purple/green geometric accents are baked into the banner image itself, so
+   the media band simply renders the image full-width at its natural aspect
+   ratio (no cropping) and the content band handles typography + rhythm. */
+
+/* Break the hero out of the section's 1200px max-width so the banner spans the
+   full viewport width with no left/right gutters. The selector is scoped
+   through main > .section to outrank `main > .section > div { max-width }`. */
+main > .section > .hero-support-wrapper {
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 0;
+}
+
+.hero-support {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Photographic banner band -- full width, natural aspect ratio (uncropped so
+   the baked-in angled shapes stay intact). */
+.hero-support .hero-support-media {
+  width: 100%;
+}
+
+.hero-support .hero-support-media picture,
+.hero-support .hero-support-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Content band below the banner, aligned to the page content width. */
+.hero-support .hero-support-content {
+  box-sizing: border-box;
+  max-width: var(--content-max-width, 1200px);
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 24px 24px;
+}
+
+.hero-support .hero-support-content > * {
+  margin-top: 0;
+}
+
+/* Eyebrow label: TAQA purple, uppercase, tracked -- a brand hallmark unique
+   to this block, so it lives here rather than in global styles. */
+.hero-support .hero-support-content .hero-support-eyebrow {
+  margin: 0 0 24px;
+  color: var(--taqa-purple);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-support .hero-support-content h1 {
+  margin: 0 0 12px;
+}
+
+.hero-support .hero-support-content p:not(.hero-support-eyebrow) {
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  .hero-support .hero-support-content {
+    padding: 56px 32px 40px;
+  }
+
+  .hero-support .hero-support-content .hero-support-eyebrow {
+    margin-bottom: 32px;
+    font-size: 16px;
+  }
+}

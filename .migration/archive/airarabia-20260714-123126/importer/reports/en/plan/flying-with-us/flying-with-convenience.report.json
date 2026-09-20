@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.airarabia.com/en/plan/flying-with-us/flying-with-convenience",
+  "path": "en/plan/flying-with-us/flying-with-convenience",
+  "timestamp": "2026-07-08T13:52:47.420Z",
+  "title": "FLY WITH CONVENIENCE & COMFORT",
+  "template": "plan-landing",
+  "blocks": [
+    "cards-fare",
+    "cards-usp",
+    "cards-usp",
+    "cards-usp",
+    "columns-promo"
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "url": "https://www.airarabia.com/en/plan/flying-with-us/flying-with-convenience",
+  "template": "plan-landing",
+  "philosophy": "David's Model - minimize blocks, prefer default content, honor visual-trees hints (hint:block => must be block).",
+  "sections": [
+    {
+      "section": 1,
+      "visualTreeId": "rc2",
+      "style": "light, full-width banner image",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "Full-width banner image (AirRewards promo banner); inner text/CTA slots empty.",
+          "decision": "default-content",
+          "blockName": null,
+          "reason": "Only an image is present (overlay text/CTA slots are empty). An author places a single image in the section - no block structure needed. Not a hero (no heading/CTA content on this page)."
+        }
+      ]
+    },
+    {
+      "section": 2,
+      "visualTreeId": "rc3",
+      "style": "light",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "Page title H1: FLY WITH CONVENIENCE & COMFORT.",
+          "decision": "default-content",
+          "blockName": null,
+          "reason": "A heading the author types directly."
+        }
+      ]
+    },
+    {
+      "section": 3,
+      "visualTreeId": "rc4",
+      "style": "light",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "Intro paragraph rich text.",
+          "decision": "default-content",
+          "blockName": null,
+          "reason": "A paragraph the author types directly."
+        }
+      ]
+    },
+    {
+      "section": 4,
+      "visualTreeId": "rc5",
+      "style": "light, 3-up bordered grid",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "3 Fare option items (Basic/Ultimate/Value Fare): title + description. No images, no links.",
+          "decision": "block",
+          "blockName": "cards-fare",
+          "blockVariant": "cards-fare",
+          "baseCardsVariant": "Cards (no images)",
+          "reason": "hint:block. Repeating structured items with title+description and no images. Obvious match for the cards 'no images' variant (1-column rows, text only). Variant: cards-fare (text-only bordered cards)."
+        }
+      ]
+    },
+    {
+      "section": 5,
+      "visualTreeId": "rc6+rc7+rc8",
+      "style": "light, heading + 3-up card grid",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "H2 heading: Convenient Check-in Options (rc7 adjacent empty rich-text carries no content).",
+          "decision": "default-content",
+          "blockName": null,
+          "reason": "hint:default-content. A heading the author types directly."
+        },
+        {
+          "sequence": 2,
+          "description": "3 check-in option cards (City / Online / Priority Check-in): image + title + description + link.",
+          "decision": "block",
+          "blockName": "cards-usp",
+          "blockVariant": "cards-usp",
+          "baseCardsVariant": "Cards",
+          "reason": "hint:block. Repeating structured items with image + title + description + CTA. Obvious match for the cards block (2-column rows: image | text+link). Variant: cards-usp (image card grid)."
+        }
+      ]
+    },
+    {
+      "section": 6,
+      "visualTreeId": "rc9+rc10",
+      "style": "light, heading + 5-item card grid",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "H2 heading: Comfort On board.",
+          "decision": "default-content",
+          "blockName": null,
+          "reason": "hint:default-content. A heading the author types directly."
+        },
+        {
+          "sequence": 2,
+          "description": "5 onboard-comfort cards (Carry-on Baggage / Generous Legroom / SkyCafe / SkyTime / Fun on board): image + title + description. No links.",
+          "decision": "block",
+          "blockName": "cards-usp",
+          "blockVariant": "cards-usp",
+          "baseCardsVariant": "Cards",
+          "reason": "hint:block. Repeating structured items with image + title + description. Obvious match for the cards block (2-column rows). Same content shape as section 5 minus the CTA - the cards-usp variant covers both."
+        }
+      ]
+    },
+    {
+      "section": 7,
+      "visualTreeId": "rc11",
+      "style": "light; single bordered rounded promo card with padding; horizontal layout (media/text left, button right)",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "Block Your Ticket promo: 56x56 icon + H3 heading + paragraph + Book Now button, arranged horizontally in a single bordered card.",
+          "decision": "block",
+          "blockName": "columns-promo",
+          "blockVariant": "columns-promo",
+          "reason": "hint:block. A single, distinct featured promo (not a repeating grid). Content sits side-by-side (icon+text on one side, CTA button on the other), which maps to the columns block. Cards was rejected because there is only one item and the layout is a horizontal media+text+CTA arrangement rather than a uniform card grid. Variant: columns-promo."
+        }
+      ],
+      "sectionMetadataDecision": "SKIP",
+      "sectionMetadataReason": "Step 3e: single-block section. The white card with 1px light-grey border and rounded corners is the promo card's own (block-specific) design sitting on the plain white page background - it is not a full-width section container band. Content is not a full-bleed colored band; the border/rounding belongs to the block. Skip section-metadata."
+    },
+    {
+      "section": 8,
+      "visualTreeId": "rc12+rc13",
+      "style": "light-grey background band (container-fluid-grey), 3-up card grid",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "3 bottom CTA cards (Book flight / Contact us / Destinations): image + title + description + link. Preceded by empty rich-text (rc12).",
+          "decision": "block",
+          "blockName": "cards-usp",
+          "blockVariant": "cards-usp",
+          "baseCardsVariant": "Cards",
+          "reason": "hint:block. Repeating structured items with image + title + description + CTA. Obvious match for the cards block (2-column rows: image | text+link). Variant: cards-usp (image card grid)."
+        }
+      ],
+      "sectionMetadataDecision": "KEEP",
+      "sectionMetadataStyle": "grey",
+      "sectionMetadataReason": "Step 3e: single-block section. The light-grey (container-fluid-grey) is a full-width band behind the entire card row with visible section padding - clearly a section container background, not intrinsic to the cards block. Keep section-metadata style=grey."
+    }
+  ],
+  "blockStructuresFetched": {
+    "cards": {
+      "Cards": "2-column rows: cell 1 = image, cell 2 = title (as heading/strong) + description + optional CTA link.",
+      "Cards (no images)": "1-column rows: single cell = title + description + optional CTA link."
+    },
+    "columns": "Rows of side-by-side cells; each cell holds text/image/CTA. Single row [icon+text | CTA button] renders the horizontal promo."
+  },
+  "summary": {
+    "defaultContentSequences": 5,
+    "blockSequences": 5,
+    "genericBlocksUsed": ["cards", "columns"],
+    "variantsUsed": ["cards-fare", "cards-usp", "columns-promo"],
+    "variantMapping": {
+      "section4.cards": "cards-fare",
+      "section5.cards": "cards-usp",
+      "section6.cards": "cards-usp",
+      "section7.columns": "columns-promo",
+      "section8.cards": "cards-usp"
+    }
+  }
+}

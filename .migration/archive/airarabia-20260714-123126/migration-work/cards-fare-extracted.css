@@ -1,0 +1,37 @@
+/* Block: cards-fare — extracted from source computed styles (desktop >=992px) */
+
+/* container (.row) */
+.container { display: flex; flex-wrap: wrap; gap: normal; justify-content: flex-start; }
+
+/* card (.card-promo--bordered, col-lg-4) */
+.card {
+  flex: 1 1 auto;
+  max-width: 31%;
+  margin: 15px 11px;              /* ~22px gutter between cards */
+  padding: 12px 15px 17px;
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 8px;
+  background-color: transparent;
+  box-shadow: none;
+  text-align: start;
+}
+
+/* title (.promo-title) */
+.title {
+  font-size: 22px;
+  font-weight: 400;
+  font-family: AA-Heading-Rg, sans-serif;  /* fallback Noto Sans */
+  line-height: 28.6px;
+  color: rgb(57, 69, 75);
+  margin: 0;
+}
+
+/* description (.promo-text) */
+.desc {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Noto-Sans-Rg, sans-serif;
+  line-height: 21.28px;
+  color: rgb(57, 69, 75);
+  margin: 7px 0 0;
+}

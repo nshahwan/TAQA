@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.nileair.com/baggage-allowance",
+  "path": "baggage-allowance",
+  "timestamp": "2026-07-19T09:48:26.006Z",
+  "title": "Nile Air – Your Journey, Our Care",
+  "template": "content-page",
+  "blocks": [
+    "accordion-faq",
+    "accordion-faq",
+    "table"
+  ]
+}

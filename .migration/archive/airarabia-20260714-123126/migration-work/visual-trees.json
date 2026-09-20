@@ -1,0 +1,41 @@
+{
+  "https://www.airarabia.com/en/plan/flying-with-us/flying-with-convenience": {
+    "signature": "sB(s(2x2B,s(s(s,s),s,s,3x1,s,s,3x1,s,3x2,2x1B,s,3x1B),s(5x3,2x1)),s)",
+    "nodeMap": {
+      "r": "body",
+      "rc1": "#wrapper",
+      "rc1c1": "#wrapper > header",
+      "rc1c2": "#wrapper > main",
+      "rc1c2c1": "#content > div.component.container > div.component-content > div.row > div.component.banner-promo.full-width-banner.col-12.col-lg-6.air-reward",
+      "rc1c2c2": "#content > div.component.container > div.component-content > div.row > div.component.title.col-12",
+      "rc1c2c3": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(3)",
+      "rc1c2c4": "#content > div.component.container > div.component-content > div.row > div.component.snippet.col-lg-12.col-xl-12.initialized",
+      "rc1c2c5": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(5)",
+      "rc1c2c6": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(6)",
+      "rc1c2c7": "#content > div.component.container > div.component-content > div.row > div.component.snippet.col-12.initialized:nth-of-type(7)",
+      "rc1c2c8": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(8)",
+      "rc1c2c9": "#content > div.component.container > div.component-content > div.row > div.component.snippet.col-12.initialized:nth-of-type(9)",
+      "rc1c2c10": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(10)",
+      "rc1c2c11": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(11)",
+      "rc1c2c12": "#content > div.component.container > div.component-content > div.row > div.component.snippet.col-12.hide-all-mobile.container-fluid-grey.initialized",
+      "rc1c3": "#wrapper > footer",
+      "rc2": "#onetrust-consent-sdk"
+    },
+    "sections": [
+      { "id": "rc1", "selector": "#wrapper > header", "layout": "2x2", "hasBg": true, "hint": "block" },
+      { "id": "rc2", "selector": "#content > div.component.container > div.component-content > div.row > div.component.banner-promo.full-width-banner.col-12.col-lg-6.air-reward", "layout": null, "hasBg": false, "hint": "default-content" },
+      { "id": "rc3", "selector": "#content > div.component.container > div.component-content > div.row > div.component.title.col-12", "layout": null, "hasBg": false, "hint": "default-content" },
+      { "id": "rc4", "selector": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(3)", "layout": null, "hasBg": false, "hint": "default-content" },
+      { "id": "rc5", "selector": "#content > div.component.container > div.component-content > div.row > div.component.snippet.col-lg-12.col-xl-12.initialized", "layout": "3x1", "hasBg": false, "hint": "block" },
+      { "id": "rc6", "selector": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(5)", "layout": null, "hasBg": false, "hint": "default-content" },
+      { "id": "rc7", "selector": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(6)", "layout": null, "hasBg": false, "hint": "default-content" },
+      { "id": "rc8", "selector": "#content > div.component.container > div.component-content > div.row > div.component.snippet.col-12.initialized:nth-of-type(7)", "layout": "3x1", "hasBg": false, "hint": "block" },
+      { "id": "rc9", "selector": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(8)", "layout": null, "hasBg": false, "hint": "default-content" },
+      { "id": "rc10", "selector": "#content > div.component.container > div.component-content > div.row > div.component.snippet.col-12.initialized:nth-of-type(9)", "layout": "3x2", "hasBg": false, "hint": "block" },
+      { "id": "rc11", "selector": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(10)", "layout": "2x1", "hasBg": true, "hint": "block" },
+      { "id": "rc12", "selector": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(11)", "layout": null, "hasBg": false, "hint": "default-content" },
+      { "id": "rc13", "selector": "#content > div.component.container > div.component-content > div.row > div.component.snippet.col-12.hide-all-mobile.container-fluid-grey.initialized", "layout": "3x1", "hasBg": true, "hint": "block" },
+      { "id": "rc14", "selector": "#wrapper > footer", "layout": null, "hasBg": false, "hint": "block" }
+    ]
+  }
+}

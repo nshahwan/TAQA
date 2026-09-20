@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://taqadistribution.com/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services",
+  "path": "addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services",
+  "timestamp": "2026-09-16T08:55:44.447Z",
+  "title": "TAQA Distribution",
+  "template": "help-and-support",
+  "blocks": [
+    "hero-support",
+    "cards-quicklink",
+    "accordion-faq",
+    "carousel-tips",
+    "carousel-tips",
+    "cards-support"
+  ]
+}

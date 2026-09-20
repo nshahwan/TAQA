@@ -1,0 +1,147 @@
+/* ===== hero-residential — navy spotlight band =====
+   The residential overview opens with a navy band: an eyebrow line, a two-line
+   heading, and three pill CTAs on the left, with a large banner photo bleeding
+   in from the right behind a navy-to-transparent gradient. Mobile-first. */
+
+/* Break the hero out of the section's 1200px max-width so the navy band spans
+   the full viewport width with no left/right gutters. The selector is scoped
+   through main > .section to outrank `main > .section > div { max-width }`. */
+main > .section > .hero-residential-wrapper {
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 0;
+}
+
+.hero-residential.block {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--taqa-navy, #00093f);
+  color: #fff;
+}
+
+/* banner media */
+.hero-residential .hero-residential-media {
+  line-height: 0;
+}
+
+.hero-residential .hero-residential-media picture,
+.hero-residential .hero-residential-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* content over the band */
+.hero-residential .hero-residential-content {
+  box-sizing: border-box;
+  padding: 40px 24px 48px;
+}
+
+.hero-residential .hero-residential-eyebrow {
+  margin: 0 0 8px;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.hero-residential-content h1,
+.hero-residential-content h2,
+.hero-residential-content h3 {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+}
+
+/* the source splits the headline across two heading lines */
+.hero-residential-content h3 {
+  font-size: 34px;
+}
+
+.hero-residential-content h3 + h3 {
+  color: var(--taqa-teal, #0ab3a1);
+}
+
+/* CTA pills */
+.hero-residential .hero-residential-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.hero-residential .hero-residential-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 26px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+/* first CTA is the solid teal primary; the rest are white pills */
+.hero-residential .hero-residential-actions a:first-child {
+  background: var(--taqa-teal, #0ab3a1);
+  color: #fff;
+}
+
+.hero-residential .hero-residential-actions a:not(:first-child) {
+  background: #fff;
+  color: var(--taqa-navy, #00093f);
+}
+
+.hero-residential .hero-residential-actions a:hover {
+  opacity: 0.9;
+}
+
+/* ===== DESKTOP (>= 900px) ===== */
+@media (width >= 900px) {
+  .hero-residential.block {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 560px;
+  }
+
+  /* banner fills the band; content overlays the left with a navy gradient */
+  .hero-residential .hero-residential-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-residential .hero-residential-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--taqa-navy, #00093f) 0%, rgb(0 9 63 / 0%) 55%);
+  }
+
+  .hero-residential .hero-residential-content {
+    position: relative;
+    z-index: 1;
+    align-self: center;
+    max-width: var(--content-max-width, 1200px);
+    width: 100%;
+    margin: 0 auto;
+    padding: 64px max(24px, calc(50vw - 600px + 24px));
+  }
+
+  .hero-residential-content h3 {
+    font-size: 52px;
+  }
+
+  .hero-residential .hero-residential-eyebrow {
+    font-size: 16px;
+  }
+}

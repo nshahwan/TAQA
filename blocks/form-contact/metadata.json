@@ -1,0 +1,39 @@
+{
+  "variantName": "form-contact",
+  "baseBlock": "form",
+  "version": "1.0.0",
+  "created": "2026-07-14T12:59:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.nileair.com/travelling-pets",
+    "originPage": "Travelling With Pets (content-page template)",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "contact-form",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "field rows (type | name | label | placeholder/options | required) + submit row",
+    "buttonCount": 1,
+    "imageCount": 0,
+    "fields": ["name (text)", "subject (select)", "email (email)", "phone (tel)", "message (textarea)"]
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "simple authored contact / enquiry forms",
+      "content pages needing a name/email/subject/message form with a submit button"
+    ],
+    "notSuitableFor": [
+      "complex multi-step or conditional forms (use an Adaptive Form via forms-excat)",
+      "payment / booking flows"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/travelling-pets"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-14T12:59:00.000Z",
+    "note": "Created from scratch: no vanilla 'form' block exists in the sta-boilerplate library and the forms-excat plugin is not enabled, so a standalone form-contact variant was built following the standard variant workflow. Used by travelling-pets contact form (rc4c5 / #contact-us)."
+  }
+}

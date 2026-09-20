@@ -1,0 +1,38 @@
+{
+  "variantName": "cards-quicklink",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-14T12:46:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.nileair.com/",
+    "originPage": "Nile Air home landing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "feature",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "icon + linked title",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "icon-led quick-link / feature strips (small icon + short linked label, no description)",
+      "'Why choose us' benefit grids and shortcut link rows"
+    ],
+    "notSuitableFor": [
+      "cards with a description or CTA text (use cards-usp)",
+      "text-only cards without imagery (use cards-fare)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 2,
+    "lastUsed": "2026-07-14T12:46:00.000Z",
+    "note": "Used by home quick-links feature strip (rc4c2, 6 items) and 'Why choose Nile Air?' benefits grid (rc4c3, 6 items). Both are icon + short linked label."
+  }
+}

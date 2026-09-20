@@ -1,0 +1,63 @@
+{
+  "definitions": [
+    {
+      "title": "Promo Columns",
+      "id": "columns-promo",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Columns Promo",
+              "filter": "columns-promo"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Promo Column",
+      "id": "columns-promo-col",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Promo Column",
+              "model": "columns-promo-col"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "columns-promo-col",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image (optional)",
+          "multi": false
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Content",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "columns-promo",
+      "components": [
+        "columns-promo-col"
+      ]
+    }
+  ]
+}

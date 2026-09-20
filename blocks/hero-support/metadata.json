@@ -1,0 +1,20 @@
+{
+  "variantName": "hero-support",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "page-intro",
+    "imagePattern": "banner"
+  },
+  "contentPattern": "Full-width photographic banner image followed by an eyebrow label, an H1 heading, and an intro paragraph.",
+  "options": [],
+  "memberVariantIds": ["hero-support"],
+  "usage": {
+    "reuseCount": 1,
+    "pagesFound": [
+      "https://taqadistribution.com/addc/en-us/business/help-and-support/certificates"
+    ]
+  }
+}

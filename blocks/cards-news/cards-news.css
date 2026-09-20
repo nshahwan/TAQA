@@ -1,0 +1,77 @@
+.cards-news > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px 18px;
+}
+
+@media (width >= 900px) {
+  .cards-news > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* card is a bare link block: transparent, no border/shadow/padding */
+.cards-news > ul > li {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  overflow: visible;
+  transition: transform 0.2s ease;
+}
+
+/* cover image: rounded, cropped, ~2.23:1 aspect ratio */
+.cards-news .cards-news-card-image {
+  line-height: 0;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.cards-news .cards-news-card-image img {
+  width: 100%;
+  aspect-ratio: 480 / 298;
+  object-fit: cover;
+  display: block;
+}
+
+/* content sits directly below the image */
+.cards-news .cards-news-card-body {
+  margin: 0;
+  padding: 0;
+}
+
+.cards-news .cards-news-card-body h3 {
+  margin: 12px 40px 10px 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  color: rgb(51 63 81);
+}
+
+.cards-news .cards-news-card-body h3 a:any-link {
+  color: rgb(51 63 81);
+  text-decoration: none;
+}
+
+.cards-news .cards-news-card-body h3 a:hover {
+  color: var(--link-hover-color);
+  text-decoration: none;
+}
+
+/* date and summary: smaller, muted */
+.cards-news .cards-news-card-body p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  color: rgb(136 150 171);
+}
+
+/* subtle hover lift on the whole card */
+.cards-news > ul > li:hover {
+  transform: translateY(-2px);
+}

@@ -1,0 +1,122 @@
+/* cards-support: a row of support options (icon + title + one-line description)
+   on a dark navy section band (section style="dark"). Titles and descriptions
+   render in TAQA teal. Values extracted from taqadistribution.com computed
+   styles: title 22px/400 teal uppercase, desc 14px teal, 20px inter-item gap.
+
+   Decorated DOM:
+   .cards-support > ul > li > div.cards-support-card-body (h6 > a, p)
+   (source icons use an icon font and were not imported, so there is no icon
+   cell; if a picture is authored it becomes .cards-support-card-icon). */
+
+.cards-support ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.cards-support li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  gap: 12px;
+  padding: 40px 24px;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+/* hover: teal→navy gradient panel behind the whole card (matches the source) */
+.cards-support li::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(348.83deg, rgb(0 9 63 / 60%) 33.89%, rgb(10 179 161 / 60%) 94.23%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cards-support li:hover::before {
+  opacity: 1;
+}
+
+/* keep card content above the gradient overlay */
+.cards-support .cards-support-card-icon,
+.cards-support .cards-support-card-body {
+  position: relative;
+  z-index: 1;
+}
+
+/* optional icon (only present if an image was authored) */
+.cards-support .cards-support-card-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards-support .cards-support-card-icon img {
+  width: 64px;
+  height: 65px;
+  object-fit: contain;
+}
+
+.cards-support .cards-support-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* title */
+.cards-support h6 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.66px;
+  text-transform: uppercase;
+  color: var(--taqa-teal);
+}
+
+/* title link — override global a:any-link and the EDS button reset */
+.cards-support h6 a:any-link {
+  color: var(--taqa-teal);
+  font: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* one-line description */
+.cards-support p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--taqa-teal);
+}
+
+/* hover: title + description turn white over the gradient panel */
+.cards-support li:hover h6,
+.cards-support li:hover h6 a:any-link,
+.cards-support li:hover p {
+  color: #fff;
+}
+
+@media (width >= 600px) {
+  .cards-support ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-support ul {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}

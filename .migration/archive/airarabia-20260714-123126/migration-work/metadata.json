@@ -1,0 +1,47 @@
+{
+  "url": "https://www.airarabia.com/en/plan/flying-with-us/flying-with-convenience",
+  "timestamp": "2026-07-08T13:20:38.911Z",
+  "scrapeMethod": "full-browser-playwright (IDO Edge Firewall bypass; headless scrape returns 403)",
+  "paths": {
+    "documentPath": "/en/plan/flying-with-us/flying-with-convenience",
+    "htmlFilePath": "content/en/plan/flying-with-us/flying-with-convenience.html",
+    "mdFilePath": "content/en/plan/flying-with-us/flying-with-convenience.md",
+    "dirPath": "content/en/plan/flying-with-us",
+    "filename": "flying-with-convenience"
+  },
+  "screenshot": "./screenshot.png",
+  "html": {
+    "filePath": "./cleaned.html"
+  },
+  "metadata": {
+    "title": "FLY WITH CONVENIENCE & COMFORT",
+    "og:title": "Flying With Convenience",
+    "description": null,
+    "canonical": "https://www.airarabia.com/en/Plan/Flying-with-us/Flying-With-Convenience"
+  },
+  "images": {
+    "count": 13,
+    "mapping": {
+      "https://www.airarabia.com/-/media/Project/Air-Arabia/Air-Arabia/USP/G96371_Hero_Banner_2000x532px_204.jpg?h=532&w=2000&hash=77ADD4B26E170D1D736A543FCF5A15B5": "./images/img-4a588d0f.png",
+      "https://www.airarabia.com/-/media/Project/Air-Arabia/Air-Arabia/USP/CityCheck-in_360x170px.jpg?h=170&w=360&hash=5526DF42DC8AB33972C36732F2F5A81B": "./images/img-b2f49b8f.png",
+      "https://www.airarabia.com/-/media/Project/Air-Arabia/Air-Arabia/USP/OnlineCheck-in_360x170px.jpg?h=170&w=360&hash=D74FC0CCED3F30395673A2727A239044": "./images/img-094f9fb8.png",
+      "https://www.airarabia.com/-/media/Project/Air-Arabia/Air-Arabia/USP/CityCheck-in_360x170px-copy.jpg?h=170&w=360&hash=583C5BCDE97E2E0659A9221DA391F784": "./images/img-3e056a4c.png",
+      "https://www.airarabia.com/-/media/Project/Air-Arabia/Air-Arabia/USP/Carry-onBaggageAllowance_360x170px.jpg?h=170&w=360&hash=8ACEB69A058E5CEAB58E67DD6AD605F1": "./images/img-51e0c283.png",
+      "https://www.airarabia.com/-/media/Project/Air-Arabia/Air-Arabia/USP/GenerousLegroom_360x170px.jpg?h=170&w=360&hash=4C9CD8BAD90DBF16BCF94447FCAA28E6": "./images/img-3bfe924f.png",
+      "https://www.airarabia.com/-/media/Project/Air-Arabia/Air-Arabia/USP/SkyCafe_360x170px.jpg?h=170&w=360&hash=44468BF73A1A9E85D3775C8857FB378C": "./images/img-ed536d99.png",
+      "https://www.airarabia.com/-/media/Project/Air-Arabia/Air-Arabia/USP/SkyTime_360x170px.jpg?h=170&w=360&hash=23C639B8EBB2B10AEFBE4AFB926AA415": "./images/img-681e3180.png",
+      "https://www.airarabia.com/-/media/Project/Air-Arabia/Air-Arabia/USP/FunOnBoard_360x170px.jpg?h=170&w=360&hash=7B20D7BE71940E95D573D1B380C52755": "./images/img-d2939730.png",
+      "https://www.airarabia.com/-/media/Project/Air%20Arabia/Air%20Arabia/USP/HoldYourBooking_icon_56x56px_213": "./images/img-c878d175.png",
+      "https://www.airarabia.com/-/media/Project/Air-Arabia/Air-Arabia/Hala_Services_360X170_pxl_2/Booking-Channel_360X170_pxl/Groups-and-charters_360X170_pxl_4/AA-Plane-new.jpg?h=170&w=360&hash=C98172440427DBBE9DBD0D4533AA744F": "./images/img-ebd6cf2c.png",
+      "https://www.airarabia.com/-/media/Project/Air-Arabia/Air-Arabia/Website-links_Contact-us.png?h=170&w=360&hash=D7E6AED2B8082E5C77D604763115DCF7": "./images/img-f427d38b.png",
+      "https://www.airarabia.com/-/media/Project/Air-Arabia/Air-Arabia/skywards-membership-tier-d600x400/family-account/Where_we_fly_360x170.jpg?h=170&w=360&hash=D2F1D6AF200EF8234D9DEBC6548C432B": "./images/img-b2587b2b.png"
+    },
+    "stats": {
+      "total": 13,
+      "converted": 12,
+      "skipped": 0,
+      "failed": 0,
+      "note": "Fetched via authenticated browser context (credentials:include). AVIF/WebP/JPEG decoded to PNG via canvas."
+    }
+  }
+}

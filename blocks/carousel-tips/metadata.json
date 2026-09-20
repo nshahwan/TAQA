@@ -1,0 +1,20 @@
+{
+  "variantName": "carousel-tips",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "promo",
+    "imagePattern": "icon"
+  },
+  "contentPattern": "Rotating promo tiles, one visible at a time, each with an icon, a heading, a short description, and a LEARN MORE link, with dot pagination.",
+  "options": [],
+  "memberVariantIds": ["carousel-tips"],
+  "usage": {
+    "reuseCount": 1,
+    "pagesFound": [
+      "https://taqadistribution.com/addc/en-us/business/help-and-support/certificates"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "url": "https://www.airarabia.com/en/plan/flying-with-us/flying-with-convenience",
+  "rowCount": 2,
+  "confidence": 0.9,
+  "rows": [
+    { "index": 0, "role": "utility+brand", "heightPx": 40, "backgroundColor": "rgb(249,249,249)" },
+    { "index": 1, "role": "main-nav", "heightPx": 41, "backgroundColor": "rgb(249,249,249)" }
+  ],
+  "heightMismatch": false,
+  "notes": "Detected from authenticated full-browser session (firewall blocks headless detection script). Header bar is light grey #f9f9f9, ~81px total. Row 0 holds the logo, LOGIN, language and AirRewards. Row 1 holds the main nav: Plan, Manage, Check-in, Destinations, Help — each opening a dropdown."
+}

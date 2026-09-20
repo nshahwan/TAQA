@@ -1,0 +1,79 @@
+/* ===== cards-usp-overlay — tall photo tiles with an overlaid label =====
+   Three tall rounded photo tiles, each with a two-line uppercase white label
+   anchored at the bottom over a subtle dark gradient. Mobile-first. */
+
+.cards-usp-overlay > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.cards-usp-overlay > ul > li {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 418 / 574;
+}
+
+/* photo fills the tile */
+.cards-usp-overlay .cards-usp-overlay-image {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  line-height: 0;
+}
+
+.cards-usp-overlay .cards-usp-overlay-image picture,
+.cards-usp-overlay .cards-usp-overlay-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* dark gradient so the white label stays legible */
+.cards-usp-overlay > ul > li::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(0 9 63 / 70%) 0%, rgb(0 9 63 / 0%) 55%);
+  z-index: 1;
+}
+
+/* label overlay */
+.cards-usp-overlay .cards-usp-overlay-body {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  margin: 0;
+  padding: 28px 24px;
+  color: #fff;
+}
+
+.cards-usp-overlay .cards-usp-overlay-body p {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* ===== DESKTOP (>= 900px) ===== */
+@media (width >= 900px) {
+  .cards-usp-overlay > ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .cards-usp-overlay .cards-usp-overlay-body p {
+    font-size: 26px;
+  }
+}

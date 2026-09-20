@@ -1,0 +1,103 @@
+/* Block: cards-quicklink
+ * Row of bordered "quick link" tiles, each with a title and a corner arrow
+ * pointing to a related page. Migrated from taqadistribution.com certificates
+ * page ("FIND YOUR SOLUTION" tiles). Values extracted from source computed
+ * styles.
+ *
+ * Decorated EDS DOM (see cards-quicklink.js):
+ *   .cards-quicklink > ul > li
+ *      > div.cards-quicklink-card-body   (empty — decorative icon dropped on import)
+ *      > div.cards-quicklink-card-body   (p > a : the title link)
+ *
+ * The source corner arrow is an inline SVG that does not survive import, so it
+ * is recreated here as a ::after glyph on each tile.
+ */
+
+.cards-quicklink > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Each tile (source: the card <span> inside the link) */
+.cards-quicklink > ul > li {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 179px;
+  padding: 35px 30px 20px;
+  background-color: var(--taqa-card-bg);          /* #fafafa */
+  border: 2px solid rgb(172 174 185 / 40%);       /* --taqa-card-border */
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+/* hovering the tile highlights its border in brand purple */
+.cards-quicklink > ul > li:hover {
+  border-color: var(--taqa-purple);
+}
+
+/* Title cell */
+.cards-quicklink .cards-quicklink-card-body {
+  margin: 0;
+}
+
+/* Collapse the empty icon cell left behind by the import */
+.cards-quicklink > ul > li > .cards-quicklink-card-body:empty {
+  display: none;
+}
+
+.cards-quicklink .cards-quicklink-card-body p {
+  margin: 0;
+}
+
+.cards-quicklink .cards-quicklink-card-body a:any-link {
+  display: inline;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.2px;
+  color: var(--text-color);                       /* #1a1a1d */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cards-quicklink .cards-quicklink-card-body a:hover {
+  color: var(--link-hover-color);                 /* #6b42d1 */
+  text-decoration: none;
+}
+
+/* Corner arrow (source: 20x20 up-right SVG, fill #1A1A1D, align-self flex-end) */
+.cards-quicklink > ul > li::after {
+  content: "";
+  align-self: flex-end;
+  margin-top: auto;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 30 30'%3E%3Cpath fill='%231A1A1D' fill-rule='evenodd' d='M26.125 10c0-.621-.504-1.125-1.125-1.125H11.25c-4.013 0-7.34 3.193-7.375 7.169V22.5a1.125 1.125 0 0 0 2.25 0v-6.394c0-2.713 2.284-4.981 5.125-4.981H25c.621 0 1.125-.504 1.125-1.125' clip-rule='evenodd'/%3E%3Cpath fill='%231A1A1D' fill-rule='evenodd' d='M25.796 10.796c.439-.44.439-1.152 0-1.591l-5.06-5.06a1.125 1.125 0 0 0-1.591 1.59L23.409 10l-4.264 4.265a1.125 1.125 0 0 0 1.59 1.59z' clip-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+/* Make the whole tile clickable via the title link overlay */
+.cards-quicklink .cards-quicklink-card-body a:any-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* Desktop: fixed-width tiles, left-aligned (matches source 310px cards) */
+@media (width >= 900px) {
+  .cards-quicklink > ul > li {
+    flex: 0 0 310px;
+    width: 310px;
+  }
+}

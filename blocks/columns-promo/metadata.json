@@ -1,0 +1,38 @@
+{
+  "variantName": "columns-promo",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-07-08T13:23:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.airarabia.com/en/plan/flying-with-us/flying-with-convenience",
+    "originPage": "Flying with Convenience marketing landing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "promo",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "icon + heading + description + CTA button",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "single horizontal featured promo (icon/image on one side, text + CTA on the other)",
+      "'block your ticket' / 'hold your booking' style callout banners on a light background"
+    ],
+    "notSuitableFor": [
+      "repeating card grids (use a cards variant)",
+      "full-width hero banners (use hero)"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en/plan/flying-with-us/flying-with-convenience"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-08T13:23:00.000Z",
+    "note": "Used by section 7 (Block Your Ticket) as a single-row [icon+text | CTA] promo."
+  }
+}

@@ -1,0 +1,115 @@
+/* Newsletter signup: heading + text on one side, email field + Subscribe button on the other.
+   Values extracted from nileair.com .newsletter-area / .newsletter-form. */
+
+.columns-newsletter {
+  padding: 40px 0;
+}
+
+.columns-newsletter > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.columns-newsletter > div > div {
+  flex: 1;
+}
+
+/* content column: heading + supporting paragraph */
+.columns-newsletter h1 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  color: rgb(15 28 49);
+}
+
+.columns-newsletter p:not(.columns-newsletter-form) {
+  margin: 12px 0 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  color: rgb(22 40 68);
+}
+
+/* form column: relative wrapper so the button can overlay the field's right edge */
+.columns-newsletter .columns-newsletter-form {
+  position: relative;
+  display: block;
+  margin: 0;
+  max-width: 400px;
+}
+
+/* the mailto link, styled to read as the email input field */
+.columns-newsletter a.columns-newsletter-field:any-link {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  padding: 0 130px 0 25px;
+  border: none;
+  border-radius: 20px;
+  background-color: rgb(240 240 240);
+  color: rgb(0 0 0);
+  font-size: 17px;
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.columns-newsletter a.columns-newsletter-field:hover {
+  color: rgb(0 0 0);
+  text-decoration: none;
+}
+
+/* the trailing "Subscribe!" text, styled as the submit button */
+.columns-newsletter .columns-newsletter-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  padding: 0 20px;
+  border-radius: 0 20px 20px 0;
+  background-color: rgb(196 175 125);
+  color: rgb(255 255 255);
+  font-size: 18px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (width >= 900px) {
+  .columns-newsletter {
+    padding: 70px 0;
+  }
+
+  .columns-newsletter > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .columns-newsletter > div > .columns-newsletter-form-col {
+    flex: 0 0 400px;
+  }
+
+  .columns-newsletter h1 {
+    font-size: 37px;
+    line-height: 1.2;
+  }
+
+  .columns-newsletter p:not(.columns-newsletter-form) {
+    margin-top: 16px;
+    font-size: 24px;
+  }
+
+  .columns-newsletter a.columns-newsletter-field:any-link,
+  .columns-newsletter .columns-newsletter-button {
+    height: 70px;
+  }
+}

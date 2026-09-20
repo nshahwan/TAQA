@@ -1,0 +1,34 @@
+:root {
+  /* TAQA Distribution brand tokens (extracted from taqadistribution.com) */
+
+  /* Grold is a proprietary display font on the source; Poppins is the closest
+     freely available geometric sans used as the heading fallback. */
+  --heading-font-family: "Poppins", "Segoe UI", arial, helvetica, sans-serif;
+  --body-font-family: "Roboto", "Segoe UI", arial, helvetica, sans-serif;
+
+  /* core colors */
+  --background-color: #fff;
+  --text-color: #1a1a1d;
+  --link-color: #40476f;
+  --link-hover-color: #6b42d1;
+
+  /* brand palette */
+  --taqa-purple: #6b42d1;
+  --taqa-navy: #00093f;
+  --taqa-teal: #0ab3a1;
+  --taqa-lavender: #f7f7ff;
+  --taqa-card-bg: #fafafa;
+  --taqa-card-border: rgb(172 174 185 / 40%);
+
+  /* spacing */
+  --section-padding: 48px;
+  --content-max-width: 1200px;
+
+  /* heading sizes (desktop) */
+  --heading-size-xxl: 44px;
+  --heading-size-xl: 36px;
+  --heading-size-l: 28px;
+  --heading-size-m: 26px;
+  --heading-size-s: 22px;
+  --heading-size-xs: 18px;
+}

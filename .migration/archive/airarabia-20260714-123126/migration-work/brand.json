@@ -1,0 +1,35 @@
+{
+  "fonts": {
+    "body": { "family": "Noto-Sans-Rg", "familySet": "Noto-Sans-Rg, sans-serif" },
+    "heading": { "family": "AA-Heading-Rg", "familySet": "AA-Heading-Rg, sans-serif" },
+    "headingSizes": {
+      "xxl": { "mobile": "36px", "desktop": "26px" },
+      "xl": { "mobile": "28px", "desktop": "24px" },
+      "l": { "mobile": "24px", "desktop": "23px" },
+      "m": { "mobile": "20px", "desktop": "14px" },
+      "s": { "mobile": "18px", "desktop": "" },
+      "xs": { "mobile": "16px", "desktop": "" }
+    },
+    "sources": { "typekit": null, "googleFonts": [] }
+  },
+  "colors": {
+    "background": "rgb(255, 255, 255)",
+    "text": "rgb(57, 69, 75)",
+    "link": "rgb(255, 0, 65)",
+    "linkHover": "rgb(194, 0, 65)",
+    "light": "",
+    "dark": "rgb(255, 255, 255)"
+  },
+  "spacing": {
+    "sectionPadding": "24px",
+    "contentMaxWidth": "720px",
+    "navHeight": "auto"
+  },
+  "favicons": [
+    { "url": "https://www.airarabia.com/-/media/AA_New_Favicon_32px_0.png", "rel": "shortcut icon" }
+  ],
+  "fontResolution": {
+    "body": "Noto Sans (Google Fonts) — source uses 'Noto-Sans-Rg', a proprietary webfont name aliasing Noto Sans",
+    "heading": "Noto Sans fallback — source 'AA-Heading-Rg' is proprietary and not publicly available; using Noto Sans/sans-serif as closest fallback"
+  }
+}

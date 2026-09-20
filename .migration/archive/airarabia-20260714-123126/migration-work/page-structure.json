@@ -1,0 +1,159 @@
+{
+  "url": "https://www.airarabia.com/en/plan/flying-with-us/flying-with-convenience",
+  "representativeUrl": "https://www.airarabia.com/en/plan/flying-with-us/flying-with-convenience",
+  "template": "plan-landing",
+  "coverageGapsAnalyzed": [],
+  "note": "Header (rc1) and footer (rc14) excluded as auto-populated. Selectors and hints resolved from migration-work/visual-trees.json.",
+  "sections": [
+    {
+      "section": 1,
+      "visualTreeId": "rc2",
+      "selector": "#content > div.component.container > div.component-content > div.row > div.component.banner-promo.full-width-banner.col-12.col-lg-6.air-reward",
+      "hint": "default-content",
+      "style": "light background, full-width hero banner image (2000x532) with an empty inner text/link overlay slot (AirRewards promo banner)",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "A single full-width banner image spanning the top of the content area; the inner text/CTA overlay slots are empty on this page."
+        }
+      ]
+    },
+    {
+      "section": 2,
+      "visualTreeId": "rc3",
+      "selector": "#content > div.component.container > div.component-content > div.row > div.component.title.col-12",
+      "hint": "default-content",
+      "style": "light background, left-aligned page title",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "Large page-title heading (H1): \"FLY WITH CONVENIENCE & COMFORT\"."
+        }
+      ]
+    },
+    {
+      "section": 3,
+      "visualTreeId": "rc4",
+      "selector": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(3)",
+      "hint": "default-content",
+      "style": "light background",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "A single intro paragraph of rich text: \"At Air Arabia, every journey is designed to deliver value, comfort, and ease, so you can travel smarter.\""
+        }
+      ]
+    },
+    {
+      "section": 4,
+      "visualTreeId": "rc5",
+      "selector": "#content > div.component.container > div.component-content > div.row > div.component.snippet.col-lg-12.col-xl-12.initialized",
+      "hint": "block",
+      "style": "light background, 3-up grid of bordered boxes (layout 3x1)",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "A 3-item grid of Fare options (Basic Fare / Ultimate Fare / Value Fare). Each item is a bold title plus a short description paragraph. No images, no links. Bordered card boxes."
+        }
+      ]
+    },
+    {
+      "section": 5,
+      "visualTreeId": "rc6+rc7+rc8",
+      "selector": "#content > div.component.container > div.component-content > div.row > div.component.snippet.col-12.initialized:nth-of-type(7)",
+      "headingSelectors": [
+        "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(5)",
+        "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(6)"
+      ],
+      "hint": "block",
+      "style": "light background, section heading followed by a 3-up card grid (layout 3x1)",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "Section heading (H2): \"Convenient Check-in Options\" (rc6). An adjacent empty rich-text node (rc7) carries no content.",
+          "hint": "default-content"
+        },
+        {
+          "sequence": 2,
+          "description": "A 3-item grid of check-in options (City Check-in / Online Check-in / Priority Check-in). Each item has an image, a title, a description paragraph, and a link/button (City Check-In, Online Check-In, Priority Check-in).",
+          "hint": "block"
+        }
+      ]
+    },
+    {
+      "section": 6,
+      "visualTreeId": "rc9+rc10",
+      "selector": "#content > div.component.container > div.component-content > div.row > div.component.snippet.col-12.initialized:nth-of-type(9)",
+      "headingSelectors": [
+        "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(8)"
+      ],
+      "hint": "block",
+      "style": "light background, section heading followed by a 5-item card grid (layout 3x2 = 3 across, wrapping to 5 items)",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "Section heading (H2): \"Comfort On board\" (rc9).",
+          "hint": "default-content"
+        },
+        {
+          "sequence": 2,
+          "description": "A 5-item grid of onboard comfort features (Carry-on Baggage Allowance / Generous Legroom / SkyCafe / SkyTime / Fun on board). Each item has an image, a title, and a description paragraph. No links.",
+          "hint": "block"
+        }
+      ]
+    },
+    {
+      "section": 7,
+      "visualTreeId": "rc11",
+      "selector": "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(10)",
+      "hint": "block",
+      "style": "light background (white card with 1px light-grey border, rounded corners, ~24px section padding). Horizontal promo card (layout 2x1): icon + text on the left, button on the right.",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "\"Block Your Ticket\" promo card: a small 56x56 icon, an H3 heading \"Block Your Ticket\", a short descriptive paragraph, and a \"Book Now\" call-to-action button. Presented as a single bordered horizontal card on a light background."
+        }
+      ]
+    },
+    {
+      "section": 8,
+      "visualTreeId": "rc12+rc13",
+      "selector": "#content > div.component.container > div.component-content > div.row > div.component.snippet.col-12.hide-all-mobile.container-fluid-grey.initialized",
+      "headingSelectors": [
+        "#content > div.component.container > div.component-content > div.row > div.component.rich-text.col-12:nth-of-type(11)"
+      ],
+      "hint": "block",
+      "style": "light-grey background band (container-fluid-grey), 3-up card grid (layout 3x1). Preceded by an empty rich-text node (rc12).",
+      "sequences": [
+        {
+          "sequence": 1,
+          "description": "A 3-item CTA grid (Book flight / Contact us / Destinations). Each item has an image, a title, a description paragraph, and a link/button (Book Now, Ways to connect, Find out more).",
+          "hint": "block"
+        }
+      ]
+    }
+  ],
+  "blockInventory": {
+    "localBlocks": [
+      { "name": "cards", "purpose": "Grid of items with optional image, title, description, CTA. Supports 'no images' variant (text-only cards)." },
+      { "name": "columns", "purpose": "Side-by-side content layout." },
+      { "name": "hero", "purpose": "Prominent top-of-page banner with image + heading + CTA." },
+      { "name": "fragment", "purpose": "Reusable content sections." },
+      { "name": "header", "purpose": "Auto-populated site navigation." },
+      { "name": "footer", "purpose": "Auto-populated site footer." },
+      { "name": "widget", "purpose": "Project-specific widget block." }
+    ],
+    "blockCollectionAvailable": [
+      { "name": "cards", "purpose": "Card grid; 'Cards' (image+text) and 'Cards (no images)' (text-only) variants." },
+      { "name": "columns", "purpose": "Side-by-side multi-column layout." },
+      { "name": "hero", "purpose": "Large banner image + headline + optional CTA." },
+      { "name": "table", "purpose": "Tabular data (striped/bordered/no-header variants)." },
+      { "name": "accordion", "purpose": "Collapsible Q&A sections." },
+      { "name": "tabs", "purpose": "Tabbed content switcher." },
+      { "name": "carousel", "purpose": "Rotating image/content slides." },
+      { "name": "video", "purpose": "Embedded standalone video." },
+      { "name": "embed", "purpose": "External video/social embeds." },
+      { "name": "search", "purpose": "Site content search." }
+    ]
+  }
+}

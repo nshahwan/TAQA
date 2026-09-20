@@ -1,0 +1,20 @@
+{
+  "variantName": "cards-support",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "wide",
+    "purpose": "feature",
+    "imagePattern": "icon"
+  },
+  "contentPattern": "Row of repeating support options, each an icon image plus a title and a one-line description, displayed on a dark section band.",
+  "options": [],
+  "memberVariantIds": ["cards-support"],
+  "usage": {
+    "reuseCount": 1,
+    "pagesFound": [
+      "https://taqadistribution.com/addc/en-us/business/help-and-support/certificates"
+    ]
+  }
+}
