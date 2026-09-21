@@ -10,6 +10,40 @@ ingest, which requires direct access to the AEM author instance.
 
 ---
 
+## ⚠️ Known symptom: `index` missing from "Create content package"
+
+The publishing UI's **"Create content package"** dialog lists only `addc`,
+`footer`, and `nav` — **`index` does not appear**, so the migrated home page
+cannot be selected/published.
+
+**Why:** the dialog reads its page list from the **AEM sync backend**, which was
+only populated for pages registered by an earlier authenticated content-sync
+(`addc` = the first import of this page at its deep path; plus `footer`/`nav`).
+The corrected, final page is `content/index.plain.html`, but it was written
+locally and **never registered with the backend**. Editing the local
+`content-sync.json` record does not propagate to the backend — registration only
+happens through the authenticated content-sync run.
+
+**Also note — `addc` is stale:** the file
+`content/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services.plain.html`
+is the **first-import version** (before parser fixes, the footer-leak fix, and
+the 5-category FAQ). Do **not** publish `addc` as-is; the correct content is in
+`content/index.plain.html`.
+
+**Fix (run with author/sync access):**
+1. Point the content-sync tool at this `content/` directory and run it. The
+   local `content-sync.json` already lists `index.plain.html` with its current
+   hash, so the sync will register the home page with the backend.
+2. Delete the stale deep-path file so it stops appearing as `addc`:
+   `content/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services.plain.html`
+   (deletions under `content/` were blocked in the migration environment).
+3. Reopen "Create content package" — `index` now appears; `addc` is gone.
+4. Select `index` (+ `footer`, `nav`) → Preview & Publish.
+
+Map `index` to the site home: `/content/TAQA/en` → webPath `/` (see paths.json).
+
+---
+
 ## Why this hand-off exists
 
 - **Project type:** `xwalk` (Universal Editor). Content lives as JCR nodes in the
