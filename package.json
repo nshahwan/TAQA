@@ -11,7 +11,9 @@
     "build:json": "npm-run-all -p build:json:models build:json:definitions build:json:filters",
     "build:json:models": "merge-json-cli -i \"models/_component-models.json\" -o \"component-models.json\"",
     "build:json:definitions": "merge-json-cli -i \"models/_component-definition.json\" -o \"component-definition.json\"",
-    "build:json:filters": "merge-json-cli -i \"models/_component-filters.json\" -o \"component-filters.json\""
+    "build:json:filters": "merge-json-cli -i \"models/_component-filters.json\" -o \"component-filters.json\"",
+    "import:xwalk": "aem-import-helper import --urls tools/importer/urls-xwalk.txt --importjs tools/importer/import-xwalk.js --options '{\"type\":\"xwalk\",\"data\":{\"siteName\":\"taqa\",\"assetFolder\":\"taqa\"}}' --models ./component-models.json --filters ./component-filters.json --definitions ./component-definition.json",
+    "import:upload": "aem-import-helper upload --token token.txt --zip import-result.zip --asset-mapping asset-mapping.json --target https://author-p208666-e2179906.adobeaemcloud.com"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
   },
   "homepage": "https://github.com/adobe/aem-boilerplate#readme",
   "devDependencies": {
+    "@adobe/aem-import-helper": "^1.6.0",
     "@babel/eslint-parser": "7.29.7",
     "eslint": "8.57.1",
     "eslint-config-airbnb-base": "15.0.0",
