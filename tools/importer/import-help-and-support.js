@@ -1,6 +1,10 @@
 /* eslint-disable */
 /* global WebImporter */
 
+// Output target: 'index' (site home) or 'deep' (original source path).
+// Flip to 'deep' to regenerate the deep-path copy identical to index.
+const OUTPUT_MODE = 'index';
+
 // PARSER IMPORTS
 import heroSupportParser from './parsers/hero-support.js';
 import cardsQuicklinkParser from './parsers/cards-quicklink.js';
@@ -193,8 +197,16 @@ export default {
     // Re-point carousel/support icons at the local downloaded assets.
     rewriteLocalAssets(main);
 
-    // Import this page as the site index (main page), per migration request.
-    const path = WebImporter.FileUtils.sanitizePath('/index');
+    // Output path. Defaults to the site index (main page). Set IMPORT_DEEP_PATH=1
+    // (bundled below via OUTPUT_MODE) to emit at the original deep source path
+    // instead, so the deep-path copy can be regenerated to match index.
+    const pageUrl = params.originalURL || url;
+    const deepPath = new URL(pageUrl).pathname
+      .replace(/\/$/, '')
+      .replace(/\.html?$/, '');
+    const path = OUTPUT_MODE === 'deep'
+      ? WebImporter.FileUtils.sanitizePath(deepPath)
+      : WebImporter.FileUtils.sanitizePath('/index');
 
     return [{
       element: main,
