@@ -38,9 +38,9 @@
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  text-align: left;
+  text-align: center;
   box-sizing: border-box;
   padding: 8px 16px 16px;
 }
@@ -60,7 +60,8 @@
 .carousel-tips .carousel-tips-slide-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
   max-width: 340px;
   margin: 0;
 }
@@ -113,17 +114,6 @@
   border-color: var(--taqa-navy);
   color: #fff;
   text-decoration: none;
-}
-
-/* Slide heading in the tips panel is centered (matches taqadistribution.com) */
-.carousel-tips .carousel-tips-slide {
-  align-items: center;
-  text-align: center;
-}
-
-.carousel-tips .carousel-tips-slide-content {
-  align-items: center;
-  text-align: center;
 }
 
 /* Dot pagination */
