@@ -1,7 +1,10 @@
 # DAM Assets Content Package
 
 `taqa-dam-assets.zip` is a ready-to-install AEM content package containing the
-16 migrated image assets, targeting **`/content/dam/taqa`**.
+**19 migrated image assets** (every asset the index / help-and-support page and
+its nav + footer reference), targeting **`/content/dam/taqa`**. This now includes
+the hero banner and the app-promo store badges that the index page uses, in
+addition to the nav logo, footer images, support-card icons, and tip icons.
 
 ## Contents
 

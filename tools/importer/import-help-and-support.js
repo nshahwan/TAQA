@@ -101,6 +101,10 @@ const LOCAL_ASSETS = {
   media_1373dfb1d3c8e65fe26c6721b5551d95e6ca26587: 'images/support-video.svg',
   media_19618abda8537e67dceb703ddf1a5851547b74207: 'images/support-call.svg',
   media_1e78fab40cc60604540f1024b818dd7fb383593aa: 'images/support-location.svg',
+  // Hero banner + app-promo store badges
+  media_1576572bbdef583ac593009205108c2d2330bd4cb: 'images/hero-help-support.png',
+  media_15eaf62a9b3eb0799902062f3f532d150b64dcc49: 'images/app-store-badge.png',
+  media_1bd35ddb42d54491401ed9b8abecabf872f6d55ee: 'images/google-play-badge.png',
 };
 
 /**
