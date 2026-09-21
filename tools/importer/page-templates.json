@@ -1,188 +1,84 @@
 {
   "metadata": {
-    "projectType": "da"
+    "projectType": "xwalk"
   },
   "templates": [
     {
       "name": "help-and-support",
       "urls": [
-        "https://taqadistribution.com/addc/en-us/business/help-and-support/certificates",
-        "https://taqadistribution.com/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services"
+        "https://main--demoenvironment--lmanning2.aem.live/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services"
       ],
-      "representativeUrl": "https://taqadistribution.com/addc/en-us/business/help-and-support/certificates",
-      "description": "Help & Support interior page: an angled photographic page-intro hero, a 'Find Your Solution' section with quick-link certificate tiles, a 'Looking For Answers' section with an FAQ accordion plus an energy-saving-tips promo carousel and a help link panel, and a dark customer-support section with icon cards.",
+      "representativeUrl": "https://main--demoenvironment--lmanning2.aem.live/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services",
+      "description": "Help & Support page: hero, quick-link cards, app promo, energy-tips carousel, filterable FAQ accordion, and support-channel cards",
+      "urlPattern": "/addc/en-us/residential/help-and-support/*",
       "blocks": [
         {
           "name": "hero-support",
-          "instances": [
-            "div[class*='headerFrame_herosection']"
-          ]
+          "instances": [".hero-support.block", ".hero-support"]
         },
         {
           "name": "cards-quicklink",
-          "instances": [
-            "div[class*='customCarousel_container']"
-          ]
+          "instances": [".cards-quicklink.block", ".cards-quicklink"]
         },
         {
-          "name": "accordion-faq",
-          "instances": [
-            "div[class*='faqsection_faqContainer']"
-          ]
+          "name": "app-promo",
+          "instances": [".app-promo.block", ".app-promo"]
         },
         {
           "name": "carousel-tips",
-          "instances": [
-            "div[class*='tipsCarousel_carousel']"
-          ]
+          "instances": [".carousel-tips.block", ".carousel-tips"]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [".accordion-faq.block", ".accordion-faq"]
         },
         {
           "name": "cards-support",
-          "instances": [
-            "div[class*='customerSupport_subContainer']"
-          ]
+          "instances": [".cards-support.block", ".cards-support"]
         }
       ],
       "sections": [
         {
           "id": "rc2",
-          "name": "Hero",
-          "selector": [
-            "div[class*='headerFrame_herosection']"
-          ],
+          "name": "hero",
+          "selector": [".hero-support-container", ".section.hero-support-container"],
           "style": null,
-          "blocks": [
-            "hero-support"
-          ],
+          "blocks": ["hero-support"],
           "defaultContent": []
         },
         {
           "id": "rc3",
-          "name": "Find Your Solution",
-          "selector": [
-            "div[class*='customCarousel_container']"
-          ],
+          "name": "apps-and-tips",
+          "selector": [".cards-quicklink-container", ".section.cards-quicklink-container.app-promo-container.carousel-tips-container"],
           "style": null,
-          "blocks": [
-            "cards-quicklink"
-          ],
-          "defaultContent": [
-            "div[class*='customCarousel_leftHeaderContainer']"
-          ]
+          "blocks": ["cards-quicklink", "app-promo", "carousel-tips"],
+          "defaultContent": []
         },
         {
           "id": "rc4",
-          "name": "Looking For Answers",
-          "selector": [
-            "div[class*='faqPanel_container']"
-          ],
+          "name": "faq",
+          "selector": [".accordion-faq-container", ".section.accordion-faq-container"],
           "style": null,
-          "blocks": [
-            "accordion-faq",
-            "carousel-tips"
-          ],
-          "defaultContent": [
-            "div[class*='faqsection_header']",
-            "div[class*='faqPanel_quickLinkPanel']"
-          ]
+          "blocks": ["accordion-faq"],
+          "defaultContent": [".accordion-faq-container h4", ".accordion-faq-container h5", ".accordion-faq-container > div > ul"]
         },
         {
           "id": "rc5",
-          "name": "Customer Support",
-          "selector": [
-            "div[class*='customerSupport_container']"
-          ],
+          "name": "support-cards",
+          "selector": [".cards-support-container", ".dark.section.cards-support-container"],
           "style": "dark",
-          "blocks": [
-            "cards-support"
-          ],
-          "defaultContent": []
-        }
-      ],
-      "urlPattern": "/addc/en-us/*"
-    },
-    {
-      "name": "residential",
-      "urls": [
-        "https://taqadistribution.com/addc/en-us/residential/overview"
-      ],
-      "representativeUrl": "https://taqadistribution.com/addc/en-us/residential/overview",
-      "description": "Residential overview landing page: a navy spotlight hero with an eyebrow, two-line heading and CTAs over a banner photo; a 'New brand-same exceptional service' intro with three tall image USP tiles; an app-download promo band; and an Announcements news carousel.",
-      "blocks": [
-        {
-          "name": "hero-residential",
-          "instances": [
-            "div[class*='imageTextSpotlight_detailsContainer']"
-          ]
-        },
-        {
-          "name": "cards-usp-overlay",
-          "instances": [
-            "div[class*='featuresCarousel_carousel']:not([class*='indicators'])"
-          ]
-        },
-        {
-          "name": "cards-news",
-          "instances": [
-            "div[class*='customCarousel_container']"
-          ]
-        }
-      ],
-      "sections": [
-        {
-          "id": "rc2",
-          "name": "Hero",
-          "selector": [
-            "div[class*='imageTextSpotlight_detailsContainer']"
-          ],
-          "style": null,
-          "blocks": [
-            "hero-residential"
-          ],
+          "blocks": ["cards-support"],
           "defaultContent": []
         },
         {
-          "id": "rc3",
-          "name": "New Brand",
-          "selector": [
-            "div[class*='featuresCarousel_sectionheaderunit']"
-          ],
-          "style": null,
-          "blocks": [
-            "cards-usp-overlay"
-          ],
-          "defaultContent": [
-            "div[class*='featuresCarousel_featuresCarouselText']"
-          ]
-        },
-        {
-          "id": "rc4",
-          "name": "App Promo",
-          "selector": [
-            "div[class*='downloadApp_appsectioncontainer']"
-          ],
+          "id": "rc6",
+          "name": "trailing",
+          "selector": [".section:nth-of-type(5)", "main > div.section:last-child"],
           "style": null,
           "blocks": [],
-          "defaultContent": [
-            "div[class*='downloadApp_appcontent']"
-          ]
-        },
-        {
-          "id": "rc5",
-          "name": "Announcements",
-          "selector": [
-            "div[class*='customCarousel_container']"
-          ],
-          "style": null,
-          "blocks": [
-            "cards-news"
-          ],
-          "defaultContent": [
-            "div[class*='customCarousel_leftHeaderContainer']"
-          ]
+          "defaultContent": []
         }
-      ],
-      "urlPattern": "/addc/en-us/residential/*"
+      ]
     }
   ]
 }

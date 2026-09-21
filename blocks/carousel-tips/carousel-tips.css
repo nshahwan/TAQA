@@ -6,7 +6,20 @@
   position: relative;
   box-sizing: border-box;
   padding: 24px;
-  background-color: var(--taqa-lavender);
+  background-color: var(--taqa-mint);
+}
+
+/* "ENERGY SAVING TIPS" eyebrow inside the panel — teal, uppercase, tracked,
+   centered above the slides (matches taqadistribution.com). */
+.carousel-tips .carousel-tips-eyebrow {
+  margin: 8px 0 24px;
+  color: var(--taqa-teal);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 /* Slides track: one tile visible at a time, horizontal scroll-snap */
@@ -80,9 +93,9 @@
   align-items: center;
   justify-content: center;
   padding: 15px 25px;
-  border: 1px solid var(--taqa-purple);
+  border: 1px solid var(--taqa-teal);
   border-radius: 80px;
-  background-color: var(--taqa-purple);
+  background-color: var(--taqa-teal);
   color: #fff;
   font-family: var(--body-font-family);
   font-size: 10px;
@@ -102,13 +115,24 @@
   text-decoration: none;
 }
 
+/* Slide heading in the tips panel is centered (matches taqadistribution.com) */
+.carousel-tips .carousel-tips-slide {
+  align-items: center;
+  text-align: center;
+}
+
+.carousel-tips .carousel-tips-slide-content {
+  align-items: center;
+  text-align: center;
+}
+
 /* Dot pagination */
 .carousel-tips .carousel-tips-slide-indicators {
   list-style: none;
   margin: 20px 0 0;
   padding: 0 16px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 8px;
 }
 
@@ -124,11 +148,12 @@
 }
 
 .carousel-tips .carousel-tips-slide-indicator button:hover {
-  background-color: var(--taqa-purple);
+  background-color: var(--taqa-teal);
 }
 
+/* active dot (current slide) — solid teal */
 .carousel-tips .carousel-tips-slide-indicator button[disabled] {
-  background-color: var(--text-color);
+  background-color: var(--taqa-teal);
   cursor: default;
 }
 

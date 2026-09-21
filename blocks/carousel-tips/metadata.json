@@ -10,11 +10,15 @@
   },
   "contentPattern": "Rotating promo tiles, one visible at a time, each with an icon, a heading, a short description, and a LEARN MORE link, with dot pagination.",
   "options": [],
-  "memberVariantIds": ["carousel-tips"],
+  "memberVariantIds": [
+    "carousel-tips"
+  ],
   "usage": {
-    "reuseCount": 1,
+    "reuseCount": 2,
     "pagesFound": [
-      "https://taqadistribution.com/addc/en-us/business/help-and-support/certificates"
-    ]
+      "https://taqadistribution.com/addc/en-us/business/help-and-support/certificates",
+      "/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services"
+    ],
+    "lastUsed": "2026-09-21T07:22:39.775408Z"
   }
 }

@@ -143,22 +143,27 @@ footer .footer-social li {
   margin: 0;
 }
 
+/* teal filled circle with a white glyph */
 footer .footer-social a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  color: var(--taqa-teal);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--taqa-teal);
+  color: #fff;
+  transition: background 0.2s ease;
 }
 
 footer .footer-social a:hover {
-  color: var(--taqa-purple);
+  background: var(--taqa-purple);
+  color: #fff;
 }
 
 footer .footer-social svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   display: block;
 }
 

@@ -9,7 +9,8 @@
   box-sizing: border-box;
   padding: 40px 32px;
   border-radius: 8px;
-  background-image: linear-gradient(270deg, rgb(10 179 161 / 0%), var(--taqa-teal, #0ab3a1));
+  /* teal (left) blending into brand green (right), matching taqadistribution.com */
+  background-image: linear-gradient(90deg, var(--taqa-teal, #0ab3a1), #6cc24a);
   color: #fff;
 }
 
@@ -87,6 +88,11 @@
 }
 
 /* ===== two-column row: app-promo beside the energy-saving-tips carousel ===== */
+/* breathing room between the quick-link cards above and this app-promo row */
+.app-promo-row {
+  margin-top: 40px;
+}
+
 .app-promo-row > .app-promo-wrapper {
   margin: 0;
 }

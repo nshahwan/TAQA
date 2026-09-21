@@ -475,6 +475,51 @@ main .section.faq-two-column .faq-col-side {
   gap: 24px;
 }
 
+/* "WE ARE HERE TO HELP" link panel — light-grey rounded card with a dark
+   heading and a bulleted list of related links (matches taqadistribution.com).
+   It is the side-column default-content block that carries the #we-are-here-to-help
+   heading. */
+main .section.faq-two-column .faq-col-side .default-content-wrapper:has(#we-are-here-to-help) {
+  box-sizing: border-box;
+  padding: 32px;
+  background-color: var(--taqa-card-bg, #fafafa);
+  border-radius: 8px;
+}
+
+main .section.faq-two-column .faq-col-side #we-are-here-to-help {
+  margin: 0 0 20px;
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+
+main .section.faq-two-column .faq-col-side .default-content-wrapper:has(#we-are-here-to-help) ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+main .section.faq-two-column .faq-col-side .default-content-wrapper:has(#we-are-here-to-help) li {
+  margin: 0 0 20px;
+}
+
+main .section.faq-two-column .faq-col-side .default-content-wrapper:has(#we-are-here-to-help) li:last-child {
+  margin-bottom: 0;
+}
+
+main .section.faq-two-column .faq-col-side .default-content-wrapper:has(#we-are-here-to-help) li p {
+  margin: 0;
+}
+
+main .section.faq-two-column .faq-col-side .default-content-wrapper:has(#we-are-here-to-help) a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+main .section.faq-two-column .faq-col-side .default-content-wrapper:has(#we-are-here-to-help) a:hover {
+  color: var(--taqa-purple);
+}
+
 @media (width >= 900px) {
   main .section.faq-two-column {
     /* minmax(0, …) lets the columns shrink below their content's intrinsic

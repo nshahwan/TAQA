@@ -166,12 +166,14 @@ function buildFaqTwoColumn(main) {
     // would make the column wrappers look like blocks to decorateBlocks
     // (`div.section > div > div`).
     const accordion = section.querySelector(':scope > .accordion-faq-wrapper');
-    const carousel = section.querySelector(':scope > .carousel-tips-wrapper');
-    if (!accordion || !carousel) return;
+    // The side column is whatever follows the accordion in the section — the
+    // energy-tips carousel and/or the "We are here to help" link panel. Fire as
+    // long as the accordion has at least one following sibling to place beside it.
+    if (!accordion) return;
     if (section.querySelector(':scope > .faq-col-main')) return;
-
     const children = [...section.children];
     const accordionIdx = children.indexOf(accordion);
+    if (accordionIdx === children.length - 1) return; // nothing after the accordion
 
     const mainCol = document.createElement('div');
     mainCol.className = 'faq-col-main';

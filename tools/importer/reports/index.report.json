@@ -1,18 +1,16 @@
 {
   "status": "success",
-  "url": "https://www.nileair.com/",
+  "url": "https://main--demoenvironment--lmanning2.aem.live/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services",
   "path": "index",
-  "timestamp": "2026-07-19T09:47:55.705Z",
-  "title": "Nile Air – Your Journey, Our Care",
-  "template": "home-landing",
+  "timestamp": "2026-09-21T10:07:19.295Z",
+  "title": "TAQA Distribution",
+  "template": "help-and-support",
   "blocks": [
-    "carousel-hero",
+    "hero-support",
     "cards-quicklink",
-    "cards-quicklink",
-    "carousel-fare",
-    "cards-news",
-    "columns-appbanner",
+    "app-promo",
+    "carousel-tips",
     "accordion-faq",
-    "columns-newsletter"
+    "cards-support"
   ]
 }

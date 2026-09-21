@@ -2,52 +2,46 @@
 /* global WebImporter */
 /**
  * Parser for carousel-tips. Base: carousel.
- * Source: help-and-support template — div[class*='tipsCarousel_carousel']
- * Generated: 2026-09-16
+ * Source: help-and-support template — EDS-rendered div.carousel-tips.block
+ * Generated: 2026-09-16 (rewritten for current EDS DOM)
  *
- * Carousel library structure: 2 columns, multiple rows.
+ * Carousel library convention: 2 columns, multiple rows.
  *   Row 1: block name.
- *   Each slide row: [ image (only) | text content (title, description, CTA) ].
+ *   Each subsequent row = one slide: [ Image (mandatory) | Text content
+ *   (heading + description + LEARN MORE CTA, rendered as rich text) ].
  *
- * TAQA DOM: each slide is <div class="tipsCarousel_tipCard"> containing an
- * <img>, a text container (two <p>: title + description) and a "LEARN MORE"
- * <a> button (CTA, text wrapped in a <span>).
+ * Current EDS DOM: each slide is <li class="carousel-tips-slide"> containing
+ *   .carousel-tips-slide-icon (a <picture>/<img>) and
+ *   .carousel-tips-slide-content (heading <p>, description <p>, and a <p> with
+ *   the "LEARN MORE" <a href>). Each slide produces exactly one 2-column row.
  */
 export default function parse(element, { document }) {
-  // Slides.
-  let slides = Array.from(element.querySelectorAll('[class*="tipsCarousel_tipCard"]'));
+  // Real EDS slides. Fall back only to the icon-bearing list items so we never
+  // pick up the carousel indicator <li>s (which contain only <button>s).
+  let slides = Array.from(element.querySelectorAll('li.carousel-tips-slide'));
   if (slides.length === 0) {
-    slides = Array.from(element.querySelectorAll('[class*="tipCard"], [class*="slide"], li'));
+    slides = Array.from(element.querySelectorAll('ul.carousel-tips-slides > li'))
+      .filter((li) => li.querySelector('img, picture'));
   }
 
   const cells = [];
 
   slides.forEach((slide) => {
-    const image = slide.querySelector('img');
+    // Image (mandatory): prefer the <picture> (keeps <img>), else the bare <img>.
+    const iconWrap = slide.querySelector('.carousel-tips-slide-icon') || slide;
+    const image = iconWrap.querySelector('picture') || iconWrap.querySelector('img');
 
-    // Text container paragraphs: title then description.
-    const textContainer = slide.querySelector('[class*="textContainer"]') || slide;
-    const paragraphs = Array.from(textContainer.querySelectorAll('p'));
-
-    // CTA link (LEARN MORE). href may carry leading/trailing whitespace.
-    const cta = slide.querySelector('a[href]');
-
-    if (!image && paragraphs.length === 0 && !cta) return;
-
+    // Text content: heading <p>, description <p>, and the LEARN MORE <a> (in a <p>).
+    // Each paragraph appears exactly once — no duplicated CTA.
+    const contentWrap = slide.querySelector('.carousel-tips-slide-content') || slide;
     const contentCell = [];
-    paragraphs.forEach((p) => contentCell.push(p));
+    Array.from(contentWrap.querySelectorAll(':scope > p')).forEach((p) => {
+      if (p.textContent.trim() || p.querySelector('a[href]')) contentCell.push(p);
+    });
 
-    if (cta) {
-      const href = cta.getAttribute('href') ? cta.getAttribute('href').trim() : '';
-      if (href) {
-        const a = document.createElement('a');
-        a.setAttribute('href', href);
-        a.textContent = cta.textContent.trim();
-        contentCell.push(a);
-      }
-    }
+    if (!image && contentCell.length === 0) return;
 
-    // 2-column row: [ image | text content ].
+    // 2-column row: [ Image | Text content ].
     cells.push([image || '', contentCell.length ? contentCell : '']);
   });
 
