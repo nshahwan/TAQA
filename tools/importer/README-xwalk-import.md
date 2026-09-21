@@ -45,3 +45,28 @@ Editor and Publish.
 
 > Target env is hard-coded to `author-p208666-e2179906.adobeaemcloud.com` in the
 > `import:upload` script — change it there if the environment changes.
+
+## Alternative — hand-built content package (no Import-as-a-Service key)
+
+When the Import-as-a-Service API key isn't available, the content package was
+generated directly from the source `.plain.html`: sections → `root`/`section`
+nodes, blocks → `core/franklin/components/block/v1/block` nodes with model-field
+properties, container rows → `item_N` child nodes, and default content →
+`text`/`title` nodes. Images are **hotlinked** to the source EDS URLs (no DAM
+binaries).
+
+Output: `taqa-content-package.zip` (git-ignored build artifact).
+
+Install it with the **AEM Package Manager UI** (no dev token needed):
+
+1. `https://author-p208666-e2179906.adobeaemcloud.com/crx/packmgr/index.jsp`
+2. **Upload Package** → choose `taqa-content-package.zip` → **Install**.
+3. Pages land under `/content/taqa/en`; open one in the Universal Editor and
+   Publish.
+
+Notes:
+- The filter installs each page path individually (non-destructive to siblings).
+- The nileair / airarabia source pages carry broken images in the source itself
+  (`src="about:error"`) — only the ADDC/TAQA pages have real imagery.
+- If hotlinked images don't render in AEM, the fallback is a DAM import of the
+  media (via the Import-as-a-Service path above).
