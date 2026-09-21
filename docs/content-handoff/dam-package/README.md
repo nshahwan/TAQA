@@ -8,8 +8,18 @@ addition to the nav logo, footer images, support-card icons, and tip icons.
 
 ## Contents
 
+**Package format:** proper AEM `dam:Asset` nodes — each asset is a
+`dam:Asset` with `jcr:content/renditions/original` (the binary) and mimetype
+metadata, so Package Manager install produces real, browsable DAM assets (not
+raw `nt:file` nodes). Validated: 19 asset nodes, 19 original renditions, 20
+`.content.xml` (1 folder + 19 assets), all well-formed.
+
 ```
 jcr_root/content/dam/taqa/
+  .content.xml                     ← sling:Folder
+  <asset>/.content.xml             ← dam:Asset node (per asset)
+  <asset>/_jcr_content/renditions/original  ← binary (per asset)
+
   taqa-logo.svg                    ← header/nav logo
   footer-appstore.png              ← footer App Store badge
   footer-playstore.png             ← footer Google Play badge
