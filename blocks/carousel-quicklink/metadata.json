@@ -1,0 +1,21 @@
+{
+  "variantName": "carousel-quicklink",
+  "baseBlock": "carousel",
+  "canonicalModel": "container-item",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "layout": "horizontal-carousel"
+  },
+  "contentPattern": "Horizontal carousel of linked quick-link cards; each card is a bold title plus a trailing redirect arrow (no image, no description), with prev/next arrows and dot pagination.",
+  "usage": {
+    "count": 1,
+    "pages": [
+      "https://taqadistribution.com/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "carousel-quicklink"
+  ]
+}

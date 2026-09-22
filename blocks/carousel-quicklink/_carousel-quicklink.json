@@ -1,0 +1,63 @@
+{
+  "definitions": [
+    {
+      "title": "Carousel Quicklink",
+      "id": "carousel-quicklink",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Carousel Quicklink",
+              "filter": "carousel-quicklink"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Quicklink",
+      "id": "carousel-quicklink-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Quicklink",
+              "model": "carousel-quicklink-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "carousel-quicklink-item",
+      "fields": [
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "link",
+          "label": "Link",
+          "description": "The quick-link target page."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "linkText",
+          "label": "Link Text",
+          "description": "The card title shown on the quick-link."
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "carousel-quicklink",
+      "components": [
+        "carousel-quicklink-item"
+      ]
+    }
+  ]
+}

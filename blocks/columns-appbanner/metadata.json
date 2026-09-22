@@ -30,9 +30,12 @@
     ]
   },
   "usage": {
-    "pagesUsing": ["/index"],
-    "reuseCount": 1,
-    "lastUsed": "2026-07-14T12:46:00.000Z",
-    "note": "Used by home app-download banner (rc4c6): background image + eyebrow + headline + Google Play / App Store badge links."
+    "pagesUsing": [
+      "/index",
+      "/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-09-22T00:00:00.000Z",
+    "note": "Used by home app-download banner (rc4c6): background image + eyebrow + headline + Google Play / App Store badge links. REUSED on TAQA help-and-support template (residential transfer-and-removal-of-electricity-services page); structure matched exactly, no new variant needed."
   }
 }

@@ -351,6 +351,25 @@
     ]
   },
   {
+    "id": "carousel-quicklink-item",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Link",
+        "description": "The quick-link target page."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Link Text",
+        "description": "The card title shown on the quick-link."
+      }
+    ]
+  },
+  {
     "id": "carousel-tips-slide",
     "fields": [
       {

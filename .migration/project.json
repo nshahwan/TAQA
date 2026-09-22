@@ -12,11 +12,11 @@
       "previewOrg": "nshahwan",
       "previewSite": "taqa",
       "contentHostUrl": "author-p208666-e2179906.adobeaemcloud.com",
-      "aemSitePath": "/content/TAQA",
-      "aemAssetsFolderPath": "/content/dam/TAQA",
-      "aemSiteName": "TAQA",
+      "aemSitePath": "/content/taqa/en",
+      "aemAssetsFolderPath": "/content/dam/taqa",
+      "aemSiteName": "taqa",
       "aemSiteTitle": "TAQA",
-      "baseUrl": "https://taqadistribution.com/addc/en-us/residential/overview"
+      "baseUrl": "https://taqadistribution.com/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services"
     }
   }
 }

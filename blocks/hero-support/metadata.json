@@ -10,11 +10,18 @@
   },
   "contentPattern": "Full-width photographic banner image followed by an eyebrow label, an H1 heading, and an intro paragraph.",
   "options": [],
-  "memberVariantIds": ["hero-support"],
+  "memberVariantIds": [
+    "hero-support"
+  ],
   "usage": {
-    "reuseCount": 1,
+    "reuseCount": 2,
     "pagesFound": [
       "https://taqadistribution.com/addc/en-us/business/help-and-support/certificates"
-    ]
+    ],
+    "pagesUsing": [
+      "/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services"
+    ],
+    "lastUsed": "2026-09-22T00:00:00.000Z",
+    "note": "REUSED on TAQA help-and-support template (residential transfer-and-removal-of-electricity-services page); structure matched exactly, no new variant needed."
   }
 }

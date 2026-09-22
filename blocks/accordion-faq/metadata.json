@@ -30,9 +30,14 @@
     ]
   },
   "usage": {
-    "pagesUsing": ["/index", "/travelling-pets", "/addc/en-us/business/help-and-support/certificates"],
-    "reuseCount": 4,
-    "lastUsed": "2026-09-16T00:00:00.000Z",
-    "note": "Used by home FAQ accordion (rc4c7). REUSED on content-page template /travelling-pets for TWO accordion sections: 'Pets' (rc4c4 / #pets, 2 items) and 'Travelling With Pets FAQS' (rc4c6 / #travelling-with-pets-faqs, 5 items). Also applies to the other content-page URLs' accordions (baggage-allowance FAQ, nileair-holidays why-choose + FAQ). REUSED on TAQA help-and-support template (certificates page, rc4) for the 'LOOKING FOR ANSWERS ?' collapsible Q&A list. Structure matched exactly (label + rich body, collapsible Q&A); no new variant needed."
+    "pagesUsing": [
+      "/index",
+      "/travelling-pets",
+      "/addc/en-us/business/help-and-support/certificates",
+      "/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services"
+    ],
+    "reuseCount": 5,
+    "lastUsed": "2026-09-22T00:00:00.000Z",
+    "note": "Used by home FAQ accordion (rc4c7). REUSED on content-page template /travelling-pets for TWO accordion sections: 'Pets' (rc4c4 / #pets, 2 items) and 'Travelling With Pets FAQS' (rc4c6 / #travelling-with-pets-faqs, 5 items). Also applies to the other content-page URLs' accordions (baggage-allowance FAQ, nileair-holidays why-choose + FAQ). REUSED on TAQA help-and-support template (certificates page, rc4) for the 'LOOKING FOR ANSWERS ?' collapsible Q&A list. Structure matched exactly (label + rich body, collapsible Q&A); no new variant needed. REUSED on TAQA help-and-support template (residential transfer-and-removal-of-electricity-services page); structure matched exactly, no new variant needed."
   }
 }

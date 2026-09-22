@@ -2,60 +2,69 @@
 /* global WebImporter */
 /**
  * Parser for carousel-tips. Base: carousel.
- * Source: help-and-support template — div[class*='tipsCarousel_carousel']
- * Generated: 2026-09-16
- *
- * Carousel library structure: 2 columns, multiple rows.
- *   Row 1: block name.
- *   Each slide row: [ image (only) | text content (title, description, CTA) ].
- *
- * TAQA DOM: each slide is <div class="tipsCarousel_tipCard"> containing an
- * <img>, a text container (two <p>: title + description) and a "LEARN MORE"
- * <a> button (CTA, text wrapped in a <span>).
+ * Source: https://taqadistribution.com/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services
+ * xwalk REPEATING/container block. Filter "carousel-tips" holds items
+ * "carousel-tips-slide" (blocks/carousel-tips/_carousel-tips.json).
+ * Slide model fields (authoritative for this variant):
+ *   - image (reference) -> the tip image        (image cell)
+ *   - text  (richtext)  -> heading + description + LEARN MORE link (text cell)
+ * Container convention: row 1 = block name; each subsequent row = one slide
+ * with an image cell followed by a text cell.
+ * Source is a React/Next.js SPA with hashed CSS-module class names, so all
+ * selectors use [class*='...'] substrings with tag fallbacks.
  */
 export default function parse(element, { document }) {
-  // Slides.
-  let slides = Array.from(element.querySelectorAll('[class*="tipsCarousel_tipCard"]'));
-  if (slides.length === 0) {
-    slides = Array.from(element.querySelectorAll('[class*="tipCard"], [class*="slide"], li'));
-  }
+  const fieldCell = (name, ...nodes) => {
+    const present = nodes.filter(Boolean);
+    return [document.createComment(` field:${name} `), ...present];
+  };
 
-  const cells = [];
+  const cards = Array.from(element.querySelectorAll("[class*='tipCard']"));
 
-  slides.forEach((slide) => {
-    const image = slide.querySelector('img');
-
-    // Text container paragraphs: title then description.
-    const textContainer = slide.querySelector('[class*="textContainer"]') || slide;
-    const paragraphs = Array.from(textContainer.querySelectorAll('p'));
-
-    // CTA link (LEARN MORE). href may carry leading/trailing whitespace.
-    const cta = slide.querySelector('a[href]');
-
-    if (!image && paragraphs.length === 0 && !cta) return;
-
-    const contentCell = [];
-    paragraphs.forEach((p) => contentCell.push(p));
-
-    if (cta) {
-      const href = cta.getAttribute('href') ? cta.getAttribute('href').trim() : '';
-      if (href) {
-        const a = document.createElement('a');
-        a.setAttribute('href', href);
-        a.textContent = cta.textContent.trim();
-        contentCell.push(a);
-      }
-    }
-
-    // 2-column row: [ image | text content ].
-    cells.push([image || '', contentCell.length ? contentCell : '']);
-  });
-
-  if (cells.length === 0) {
+  // Empty-block guard
+  if (!cards.length) {
     element.replaceWith(...element.childNodes);
     return;
   }
 
+  const cells = [];
+  cards.forEach((card) => {
+    const image = card.querySelector('img');
+    const textContainer = card.querySelector("[class*='textContainer']");
+    const heading = textContainer ? textContainer.querySelector('p:first-child') : null;
+    const description = textContainer
+      ? textContainer.querySelector('p:nth-child(2)')
+      : null;
+    const learnMore = card.querySelector("a[class*='learnMore'], a[href]");
+
+    // Normalize the LEARN MORE link: unwrap the inner <span> so md keeps text.
+    let linkEl = null;
+    if (learnMore) {
+      linkEl = document.createElement('a');
+      linkEl.setAttribute('href', (learnMore.getAttribute('href') || '').trim());
+      linkEl.textContent = learnMore.textContent.trim();
+    }
+
+    cells.push([
+      fieldCell('image', image),
+      fieldCell('text', heading, description, linkEl),
+    ]);
+  });
+
   const block = WebImporter.Blocks.createBlock(document, { name: 'carousel-tips', cells });
-  element.replaceWith(block);
+
+  // Hoist the "ENERGY SAVING TIPS" eyebrow/header out of the block container so
+  // it survives as default content adjacent to the carousel.
+  const defaultNodes = [];
+  const header = element.querySelector("[class*='tipsCarousel_header']");
+  if (header) {
+    const text = header.textContent.trim();
+    if (text) {
+      const heading = document.createElement('h3');
+      heading.textContent = text;
+      defaultNodes.push(heading);
+    }
+  }
+
+  element.replaceWith(...defaultNodes, block);
 }

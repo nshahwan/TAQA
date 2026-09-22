@@ -1,0 +1,140 @@
+/*
+ * carousel-quicklink: horizontal quick-link card carousel ("FIND YOUR SOLUTION").
+ * Structural layout only — bordered light cards showing a bold title + trailing
+ * redirect arrow, several visible at once with horizontal scroll-snap, teal
+ * circular prev/next arrows and dot pagination. Brand accents come from the
+ * shared palette variables.
+ */
+
+.carousel-quicklink {
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* horizontal scroll-snap track */
+.carousel-quicklink .carousel-quicklink-slides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carousel-quicklink .carousel-quicklink-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* each card: full width on mobile, multiple per view on larger screens */
+.carousel-quicklink .carousel-quicklink-slide {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+  box-sizing: border-box;
+}
+
+/* the linked card body */
+.carousel-quicklink .carousel-quicklink-link {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 96px;
+  padding: 24px;
+  border: 1px solid var(--taqa-card-border, rgb(172 174 185 / 40%));
+  border-radius: 4px;
+  background: #fff;
+  color: var(--text-color, #1a1a1d);
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carousel-quicklink .carousel-quicklink-link:hover {
+  border-color: var(--taqa-purple, #6b42d1);
+  color: var(--taqa-purple, #6b42d1);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);
+}
+
+.carousel-quicklink .carousel-quicklink-title {
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+/* trailing redirect arrow icon */
+.carousel-quicklink .carousel-quicklink-arrow {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  align-self: flex-end;
+}
+
+/* prev / next circular arrow controls */
+.carousel-quicklink .carousel-quicklink-controls {
+  position: absolute;
+  top: -64px;
+  right: 0;
+  display: flex;
+  gap: 12px;
+}
+
+.carousel-quicklink .carousel-quicklink-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--taqa-teal, #0ab3a1);
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.carousel-quicklink .carousel-quicklink-nav:hover {
+  opacity: 0.85;
+}
+
+/* dot pagination */
+.carousel-quicklink .carousel-quicklink-dots {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0 0;
+  padding: 0;
+}
+
+.carousel-quicklink .carousel-quicklink-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--taqa-card-border, rgb(172 174 185 / 40%));
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.carousel-quicklink .carousel-quicklink-dot.active {
+  background: var(--taqa-teal, #0ab3a1);
+}
+
+@media (width >= 600px) {
+  .carousel-quicklink .carousel-quicklink-slide {
+    flex-basis: 45%;
+  }
+}
+
+@media (width >= 900px) {
+  .carousel-quicklink .carousel-quicklink-slide {
+    flex-basis: calc((100% - 48px) / 4);
+  }
+}

@@ -2,71 +2,71 @@
 /* global WebImporter */
 /**
  * Parser for cards-support. Base: cards.
- * Source: help-and-support template — div[class*='customerSupport_subContainer']
- * Generated: 2026-09-16
- *
- * Cards library structure: 2 columns, multiple rows.
- *   Row 1: block name.
- *   Each card row: [ image/icon | text content (title + description + CTA) ].
- *
- * TAQA DOM: each card is an <a class="supportOption_supportDiv" href> containing
- * an icon <img> (base64 SVG), a title <h6> and a description <p>. The card's own
- * href is the CTA (chat / video / tel / branch locator).
+ * Source: https://taqadistribution.com/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services
+ * xwalk REPEATING/container block. Filter "cards-support" holds items
+ * "cards-support-card" (blocks/cards-support/_cards-support.json).
+ * Card model fields (authoritative for this variant):
+ *   - image (reference) -> the card icon        (cell 0, hinted)
+ *   - text  (richtext)  -> title + description  (cell 1, hinted)
+ * Convention: each row = one card; cell 0 = image/icon, cell 1 = rich text
+ * (heading + description + optional CTA). An empty image cell must still be
+ * included. ONE ROW PER support card.
+ * The whole source card is an anchor; its href is preserved by wrapping the
+ * title heading in a link so the CTA target survives into the text richtext.
+ * Source is a React/Next.js SPA with hashed CSS-module class names, so all
+ * selectors use [class*='...'] substrings with tag fallbacks.
  */
 export default function parse(element, { document }) {
-  // Cards: the support option anchors.
-  let cards = Array.from(element.querySelectorAll('[class*="supportOption_supportDiv"]'));
-  if (cards.length === 0) {
-    cards = Array.from(element.querySelectorAll('a[class*="support"], :scope > a[href]'));
-  }
+  const fieldCell = (name, ...nodes) => {
+    const present = nodes.filter(Boolean);
+    if (!present.length) return '';
+    return [document.createComment(` field:${name} `), ...present];
+  };
 
-  const cells = [];
+  const cards = Array.from(element.querySelectorAll("a[class*='supportOption_supportDiv'], [class*='subContainer'] > a[href]"));
 
-  cards.forEach((card) => {
-    const image = card.querySelector('img');
-    const title = card.querySelector('h1, h2, h3, h4, h5, h6');
-    // Description paragraph (the innermost text <p>).
-    const descContainer = card.querySelector('[class*="supportSubHeader"]');
-    const description = descContainer
-      ? (descContainer.querySelector('p') || descContainer)
-      : card.querySelector('[class*="supportText"] p');
-
-    // The anchor itself carries the CTA href.
-    const href = card.matches('a[href]')
-      ? card.getAttribute('href')
-      : (card.querySelector('a[href]') && card.querySelector('a[href]').getAttribute('href'));
-
-    if (!image && !title && !description) return;
-
-    const contentCell = [];
-    if (title) {
-      const cleanTitle = title.textContent.trim();
-      if (href && href.trim()) {
-        // Preserve the CTA link on the title.
-        const a = document.createElement('a');
-        a.setAttribute('href', href.trim());
-        a.textContent = cleanTitle;
-        const h = document.createElement(title.tagName.match(/^H[1-6]$/) ? title.tagName : 'h3');
-        h.append(a);
-        contentCell.push(h);
-      } else {
-        contentCell.push(title);
-      }
-    }
-    if (description) {
-      const p = document.createElement('p');
-      p.textContent = description.textContent.trim();
-      contentCell.push(p);
-    }
-
-    // 2-column row: [ icon/image | text content ].
-    cells.push([image || '', contentCell.length ? contentCell : '']);
-  });
-
-  if (cells.length === 0) {
+  // Empty-block guard
+  if (!cards.length) {
     element.replaceWith(...element.childNodes);
     return;
   }
+
+  const cells = [];
+  cards.forEach((card) => {
+    const image = card.querySelector("[class*='iconContainer'] img, img");
+    const href = (card.getAttribute('href') || '').trim();
+
+    // Title (h6) — wrap in an anchor so the card's link target is preserved.
+    const titleEl = card.querySelector("[class*='supportText'] h6, h6");
+    let titleNode = null;
+    if (titleEl) {
+      const h = document.createElement('h3');
+      if (href) {
+        const a = document.createElement('a');
+        a.setAttribute('href', href);
+        a.textContent = titleEl.textContent.trim();
+        h.append(a);
+      } else {
+        h.textContent = titleEl.textContent.trim();
+      }
+      titleNode = h;
+    }
+
+    // Description — the body paragraph (skip the empty subHeader wrappers).
+    let descNode = null;
+    const descP = Array.from(card.querySelectorAll("[class*='supportText'] p"))
+      .find((p) => p.textContent.trim());
+    if (descP) {
+      descNode = document.createElement('p');
+      descNode.textContent = descP.textContent.trim();
+    }
+
+    // cell 0: image (hinted, empty cell allowed) | cell 1: text (hinted)
+    cells.push([
+      fieldCell('image', image),
+      fieldCell('text', titleNode, descNode),
+    ]);
+  });
 
   const block = WebImporter.Blocks.createBlock(document, { name: 'cards-support', cells });
   element.replaceWith(block);

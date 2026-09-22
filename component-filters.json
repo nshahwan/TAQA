@@ -25,6 +25,7 @@
       "carousel-hero",
       "carousel-fare",
       "carousel-tips",
+      "carousel-quicklink",
       "accordion-faq",
       "columns",
       "columns-appbanner",
@@ -95,6 +96,12 @@
     "id": "carousel-hero",
     "components": [
       "carousel-hero-slide"
+    ]
+  },
+  {
+    "id": "carousel-quicklink",
+    "components": [
+      "carousel-quicklink-item"
     ]
   },
   {

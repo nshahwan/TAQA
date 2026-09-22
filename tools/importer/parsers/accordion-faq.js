@@ -2,67 +2,93 @@
 /* global WebImporter */
 /**
  * Parser for accordion-faq. Base: accordion.
- * Source: help-and-support template — div[class*='faqsection_faqContainer']
- * Generated: 2026-09-16
- *
- * Accordion library structure: 2 columns, multiple rows.
- *   Row 1: block name.
- *   Each item row: [ title (question) | content (answer body) ].
- *
- * TAQA DOM: each FAQ item is a <div class="faqsection_question">. The visible
- * label is a <p> inside a <span>; a "+" toggle <span> follows. The answer body
- * may be a sibling element revealed on expand. A "LOAD MORE" button is excluded.
+ * Source: https://taqadistribution.com/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services
+ * xwalk REPEATING/container block. Filter "accordion-faq" holds items
+ * "accordion-faq-item" (blocks/accordion-faq/_accordion-faq.json).
+ * Item model fields (authoritative for this variant):
+ *   - question (text)     -> the question label      (cell 0, hinted)
+ *   - answer   (richtext) -> the answer body         (cell 1)
+ *   - category (text)     -> optional category name  (cell 2)
+ * The block JS (blocks/accordion-faq/accordion-faq.js) reads three cells per
+ * row (question / answer / category), so all three columns are emitted.
+ * ONE ROW PER question. The SPA loads answer bodies lazily, so the scraped
+ * source exposes only the question labels; answer and category cells are
+ * emitted empty (no field hint on empty cells per xwalk hinting rules).
+ * Source is a React/Next.js SPA with hashed CSS-module class names, so all
+ * selectors use [class*='...'] substrings with tag fallbacks.
  */
 export default function parse(element, { document }) {
-  // Accordion items: the question wrappers.
-  let items = Array.from(element.querySelectorAll('[class*="faqsection_question"]'));
-  if (items.length === 0) {
-    items = Array.from(element.querySelectorAll('[class*="question"], [class*="accordion"] [class*="item"]'));
+  const questionEls = Array.from(
+    element.querySelectorAll("[class*='faqsection_question'], [class*='faqContainer'] [class*='question']"),
+  );
+
+  // Empty-block guard
+  if (!questionEls.length) {
+    element.replaceWith(...element.childNodes);
+    return;
   }
 
   const cells = [];
+  questionEls.forEach((q) => {
+    // The question text lives in the bold paragraph; the trailing "+" span is
+    // block chrome and must not be emitted.
+    const label = q.querySelector("p[class*='bold'], span p, p");
+    const questionText = (label ? label.textContent : q.textContent).replace(/\+\s*$/, '').trim();
+    if (!questionText) return;
 
-  items.forEach((item) => {
-    // Question label — first text paragraph, ignoring the "+"/"-" toggle span.
-    const label = item.querySelector('p, h1, h2, h3, h4, h5, h6, span > p');
+    const questionEl = document.createElement('p');
+    questionEl.textContent = questionText;
 
-    // Answer body: look for a nested answer container, or a following sibling.
-    // NOTE: avoid matching typography classes like "typography--variant-body4"
-    // on the question <p>; only match dedicated answer/collapse containers.
-    let answer = item.querySelector('[class*="faqsection_answer"], [class*="answer"], [class*="collapse"], [class*="faqContent"]');
-    if (!answer
-      && item.nextElementSibling
-      && item.nextElementSibling.matches
-      && item.nextElementSibling.matches('[class*="answer"], [class*="collapse"], [class*="faqContent"]')) {
-      answer = item.nextElementSibling;
-    }
-
-    if (!label && !answer) return;
-
-    // Title cell: clean question text.
-    let titleCell = '';
-    if (label) {
-      const p = document.createElement('p');
-      p.textContent = label.textContent.trim();
-      titleCell = p;
-    }
-
-    // Content cell: rich answer body if present, else empty (mandatory cell padded).
-    let contentCell = '';
-    if (answer) {
-      const children = Array.from(answer.children);
-      contentCell = children.length ? children : [answer];
-    }
-
-    // 2-column row: [ title | content ].
-    cells.push([titleCell, contentCell]);
+    // cell 0: question (hinted) | cell 1: answer (empty) | cell 2: category (empty)
+    cells.push([
+      [document.createComment(' field:question '), questionEl],
+      '',
+      '',
+    ]);
   });
 
-  if (cells.length === 0) {
+  if (!cells.length) {
     element.replaceWith(...element.childNodes);
     return;
   }
 
   const block = WebImporter.Blocks.createBlock(document, { name: 'accordion-faq', cells });
-  element.replaceWith(block);
+
+  // Hoist the section default content out of the block container so it survives
+  // adjacent to the accordion: the "LOOKING FOR ANSWERS ?" heading + intro
+  // paragraph, and the category filter tab row (All / All About Metering /
+  // Disconnecting Your Supply / Emergencies / All about Moving Out) as a list.
+  const defaultNodes = [];
+  const header = element.querySelector("[class*='faqsection_header']");
+  if (header) {
+    const h = header.querySelector('h1, h2, h3, h4, h5, h6');
+    if (h) {
+      const heading = document.createElement('h2');
+      heading.textContent = h.textContent.trim();
+      defaultNodes.push(heading);
+    }
+    header.querySelectorAll('p').forEach((p) => {
+      const text = p.textContent.trim();
+      if (text) {
+        const para = document.createElement('p');
+        para.textContent = text;
+        defaultNodes.push(para);
+      }
+    });
+  }
+
+  const filters = Array.from(element.querySelectorAll("[class*='faqsection_filterButton']"))
+    .map((f) => f.textContent.trim())
+    .filter(Boolean);
+  if (filters.length) {
+    const ul = document.createElement('ul');
+    filters.forEach((label) => {
+      const li = document.createElement('li');
+      li.textContent = label;
+      ul.append(li);
+    });
+    defaultNodes.push(ul);
+  }
+
+  element.replaceWith(...defaultNodes, block);
 }

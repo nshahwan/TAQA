@@ -2,48 +2,41 @@
 /* global WebImporter */
 /**
  * Parser for hero-support. Base: hero.
- * Source: help-and-support template — div[class*='headerFrame_herosection']
- * Generated: 2026-09-16
- *
- * Hero library structure: 1 column, 3 rows.
- *   Row 1: block name
- *   Row 2: background image (optional)
- *   Row 3: title (heading), subheading, CTA (optional)
+ * Source: https://taqadistribution.com/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services
+ * xwalk simple block. Model fields (blocks/hero-support/_hero-support.json):
+ *   - image (reference)  -> row 2 (banner image)
+ *   - text  (richtext)   -> row 3 (eyebrow + heading + intro)
+ * Library convention: Hero has 1 column, up to 3 rows (name, image, text).
+ * Source is a React/Next.js SPA with hashed CSS-module class names, so all
+ * selectors use [class*='...'] substrings with tag fallbacks.
  */
 export default function parse(element, { document }) {
-  // Background image (optional)
-  const bgImage = element.querySelector('img[class*="imagesframe"], img');
+  // build a cell whose first node is a field-name hint comment (xwalk hinting)
+  const fieldCell = (name, ...nodes) => {
+    const present = nodes.filter(Boolean);
+    if (!present.length) return '';
+    return [document.createComment(` field:${name} `), ...present];
+  };
 
-  // Text content lives in the text container
-  const textContainer = element.querySelector('[class*="textContainer"]') || element;
+  // Banner image (row 2)
+  const image = element.querySelector("img[class*='imagesframe'], img");
 
-  // Eyebrow / caption (styled as small text above the heading)
-  const caption = textContainer.querySelector('[class*="title"]:not(h1):not(h2):not(h3)');
-  // Main heading
-  const heading = textContainer.querySelector('h1, h2, [class*="subtitle"]');
-  // Descriptive body text
-  const description = textContainer.querySelector('[class*="text"]:not([class*="subtitle"]):not([class*="title"])');
-  // Optional CTAs
-  const ctaLinks = Array.from(textContainer.querySelectorAll('a[href]'));
+  // Text content (row 3): eyebrow, heading, intro paragraph
+  const eyebrow = element.querySelector("p[class*='headerFrame_title'], [class*='textContainer'] p[class*='caption']");
+  const heading = element.querySelector("h1[class*='headerFrame_subtitle'], h1, h2");
+  const intro = element.querySelector("p[class*='headerFrame_text'], [class*='textContainer'] p[class*='body']");
 
   // Empty-block guard
-  if (!heading && !description && !bgImage) {
+  if (!image && !heading && !intro) {
     element.replaceWith(...element.childNodes);
     return;
   }
 
   const cells = [];
-
-  // Row 2: background image (only if present)
-  if (bgImage) cells.push([bgImage]);
-
-  // Row 3: single cell holding all text content
-  const contentCell = [];
-  if (caption) contentCell.push(caption);
-  if (heading) contentCell.push(heading);
-  if (description) contentCell.push(description);
-  contentCell.push(...ctaLinks);
-  cells.push([contentCell]);
+  const imageCell = fieldCell('image', image);
+  if (imageCell) cells.push([imageCell]);
+  const textCell = fieldCell('text', eyebrow, heading, intro);
+  if (textCell) cells.push([textCell]);
 
   const block = WebImporter.Blocks.createBlock(document, { name: 'hero-support', cells });
   element.replaceWith(block);

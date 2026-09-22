@@ -2,41 +2,29 @@
 /* global WebImporter */
 
 /**
- * Transformer: taqadistribution.com site-wide cleanup.
+ * Transformer: taqa (taqadistribution.com) site-wide cleanup.
  *
- * taqadistribution.com is a Next.js SPA. The authorable page content lives
- * inside <main>. Everything else is site shell / chrome an author would never
- * create when authoring a page (top header nav, primary navigation bar, the
- * help/locations mega-menu dropdown panels, the global footer, the OneTrust
- * cookie-consent widget) plus purely structural / non-content nodes
- * (skip link, empty shadow-root host, route announcer, modal root, scripts,
- * iframes, links, noscript, base64 stylesheets). Header/nav and footer are
- * handled by their own orchestrators.
+ * Source is a React/Next.js SPA with hashed CSS-module class names
+ * (e.g. header_header__9OzUC). The live-rendered DOM hash suffixes differ from
+ * cleaned.html, so all class-based removal selectors use substring/attribute
+ * matching [class*='...'].
  *
- * All selectors are verified against migration-work/cleaned.html of the page
- * being migrated:
- *   - a[href="#main-content"] skip link ............... line 10
- *   - header.header_header__9OzUC (top nav) ........... line 11
- *   - .primaryNavigation_container__NM_X7 ............. line 48
- *   - .dropdown_dropdown__4_Gn0 (mega-menu panels) .... lines 98, 209, 225, 290, 340
- *   - .footer_footer__Im9Y3 ........................... line 758
- *   - #onetrust-consent-sdk (cookie banner) ........... line 871
- *   - .dameg-shadow-root-host (empty) ................. line 2
- *   - next-route-announcer ............................ line 4
- *   - #modalRoot ...................................... line 7
+ * All selectors verified against migration-work/cleaned.html.
  */
+
 const TransformHook = { beforeTransform: 'beforeTransform', afterTransform: 'afterTransform' };
 
 export default function transform(hookName, element, payload) {
   if (hookName === TransformHook.beforeTransform) {
-    // Cookie-consent widget and blocking overlays — removed before block
-    // parsing so they can't interfere with block matching.
+    // OneTrust cookie consent widgets (found: #onetrust-consent-sdk, #onetrust-banner-sdk,
+    // #onetrust-pc-sdk, .onetrust-pc-dark-filter)
+    // Empty SPA host / infrastructure nodes (found: .dameg-shadow-root-host,
+    // next-route-announcer, #modalRoot)
     WebImporter.DOMUtils.remove(element, [
       '#onetrust-consent-sdk',
-      '.onetrust-pc-dark-filter',
       '#onetrust-banner-sdk',
       '#onetrust-pc-sdk',
-      // Empty SPA host nodes / overlays that carry no authorable content.
+      '.onetrust-pc-dark-filter',
       '.dameg-shadow-root-host',
       'next-route-announcer',
       '#modalRoot',
@@ -44,37 +32,36 @@ export default function transform(hookName, element, payload) {
   }
 
   if (hookName === TransformHook.afterTransform) {
-    // Non-authorable site chrome: skip link, header + primary nav (desktop
-    // AND mobile), the help/locations mega-menu dropdown panels, the global
-    // footer, and the DAMEG accessibility offline-widget overlay. Header/nav
-    // and footer are migrated by their own orchestrators.
-    // Substring/attribute selectors are used because the live-rendered DOM
-    // carries hashed CSS-module class suffixes that differ from cleaned.html,
-    // and because the responsive layout may render the mobile header instead
-    // of the desktop one during import.
+    // Remove non-content chrome and structural/non-content nodes.
+    // Class selectors use [class*='...'] because CSS-module hash suffixes are
+    // volatile between the captured DOM and the live render.
     WebImporter.DOMUtils.remove(element, [
+      // Skip link
       'a[href="#main-content"]',
-      'header',
+      // Header + top nav bar (found: header_header__, header_navigationbar__SYK)
       "[class*='header_header']",
       "[class*='header_navigationbar']",
+      'header',
+      // Primary navigation, desktop AND mobile
+      // (found: primaryNavigation_container__NM_X, primaryNavigationMobile_container__fMcyp,
+      //  primaryNavigationMobile_mainContainer__aRwkP)
       "[class*='primaryNavigation_container']",
       "[class*='primaryNavigationMobile_container']",
       "[class*='primaryNavigationMobile_mainContainer']",
+      // Mega-menu dropdown panels (found: dropdown_dropdown__)
       "[class*='dropdown_dropdown']",
+      // Global footer (found: footer_footer__Im)
       "[class*='footer_footer']",
+      // DAMEG accessibility widget (found: .dameg-shadow-root-host, .damegCursor, .damegReadingLine)
       '.dameg-shadow-root-host',
       '.damegCursor',
       '.damegReadingLine',
-      // Mobile-only duplicates of desktop content (the responsive layout
-      // renders both a desktop and a mobile copy of the tips carousel and the
-      // "We are here to help" panel). Drop the mobile copies so each block and
-      // its content are imported once.
+      // Mobile-only duplicate copies rendered alongside desktop layout
+      // (found: tipCarouselMobile__oR, weAreHereToHelpMobile__oOO, primaryNavigationMobile_*)
       "[class*='tipCarouselMobile']",
       "[class*='weAreHereToHelpMobile']",
-    ]);
-
-    // Purely structural / non-content elements.
-    WebImporter.DOMUtils.remove(element, [
+      "[class*='primaryNavigationMobile']",
+      // Structural / non-content nodes
       'script',
       'style',
       'noscript',
@@ -82,14 +69,15 @@ export default function transform(hookName, element, payload) {
       'link',
     ]);
 
-    // Strip AOS scroll-animation artifacts left on authorable content
-    // (classes + data attributes) so they don't leak into the import.
-    element.querySelectorAll('.aos-init, .aos-animate, [data-aos]').forEach((el) => {
+    // Strip AOS scroll-animation artifacts so they don't leak into the import.
+    // (found: aos-init, aos-animate classes; data-aos-delay/duration/easing attributes)
+    element.querySelectorAll('.aos-init, .aos-animate, [data-aos], [data-aos-delay], [data-aos-duration], [data-aos-easing]').forEach((el) => {
       el.classList.remove('aos-init', 'aos-animate');
-      el.removeAttribute('data-aos');
-      el.removeAttribute('data-aos-easing');
-      el.removeAttribute('data-aos-duration');
-      el.removeAttribute('data-aos-delay');
+      [...el.attributes].forEach((attr) => {
+        if (attr.name === 'data-aos' || attr.name.startsWith('data-aos-')) {
+          el.removeAttribute(attr.name);
+        }
+      });
     });
   }
 }
