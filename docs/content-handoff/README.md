@@ -10,6 +10,48 @@ ingest, which requires direct access to the AEM author instance.
 
 ---
 
+## Quickest path: run the prepared xwalk import
+
+The repo now ships ready-to-run xwalk import files that reuse the **fixed
+parsers/transformers + DAM-asset references** (same output as the live page,
+blocks preserved, images pointing at `/content/dam/taqa`):
+
+- `tools/importer/urls-xwalk.txt` — the single source URL to import
+- `tools/importer/import-xwalk.js` — transform, `OUTPUT_MODE='xwalk'`, lands the
+  page at `/content/TAQA/...` (regenerate from `import-help-and-support.js` if the
+  blocks change)
+- `package.json` scripts: `import:xwalk` and `import:upload`
+
+**Prerequisites (already done):** the 19 DAM assets are installed + published at
+`/content/dam/taqa` (see `dam-package/`).
+
+**Steps (on a machine with a working esbuild + AEM author IMS token):**
+
+```bash
+# 1. Convert the page to xwalk JCR (blocks preserved). Produces import-result.zip.
+npm run import:xwalk
+
+# 2. Upload the JCR package to the AEM author instance (authenticated).
+aem-import-helper upload \
+  --zip import-result.zip \
+  --asset-mapping asset-mapping.json \
+  --target https://author-p208666-e2179906.adobeaemcloud.com \
+  --token <IMS-token>          # or: npm run import:upload (reads token.txt)
+
+# 3. Preview + publish (these work with admin.hlx.page creds):
+curl -X POST https://admin.hlx.page/preview/nshahwan/TAQA/main/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services
+curl -X POST https://admin.hlx.page/live/nshahwan/TAQA/main/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services
+```
+
+> ⚠️ **Verify blocks survived.** The offline `html→md→md2jcr` path flattens
+> blocks; the `aem-import-helper import` service is expected to preserve them.
+> After step 1, unzip `import-result.zip` and confirm each section renders as a
+> block (e.g. a `Hero Support` / `Cards Quicklink` node), not loose default
+> content. If flattened, author the page in Universal Editor instead (blocks +
+> models are already deployed; point images at `/content/dam/taqa/...`).
+
+---
+
 ## ⚠️ Known symptom: `index` missing from "Create content package"
 
 The publishing UI's **"Create content package"** dialog lists only `addc`,
