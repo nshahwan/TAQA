@@ -35,26 +35,33 @@
   box-sizing: border-box;
 }
 
-/* the linked card body */
-.carousel-quicklink .carousel-quicklink-link {
+/* the linked card body — override EDS auto `.button` styling (pill/underline)
+   so the card reads as a bordered tile with plain bold text, like the source. */
+.carousel-quicklink .carousel-quicklink-link,
+.carousel-quicklink a.button.carousel-quicklink-link {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
   box-sizing: border-box;
+  width: 100%;
   height: 100%;
   min-height: 96px;
+  margin: 0;
   padding: 24px;
   border: 1px solid var(--taqa-card-border, rgb(172 174 185 / 40%));
   border-radius: 4px;
   background: #fff;
   color: var(--text-color, #1a1a1d);
+  font-weight: 400;
   text-decoration: none;
   transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.carousel-quicklink .carousel-quicklink-link:hover {
+.carousel-quicklink .carousel-quicklink-link:hover,
+.carousel-quicklink a.button.carousel-quicklink-link:hover {
   border-color: var(--taqa-purple, #6b42d1);
+  background: #fff;
   color: var(--taqa-purple, #6b42d1);
   box-shadow: 0 4px 16px rgb(0 0 0 / 8%);
 }
@@ -62,6 +69,7 @@
 .carousel-quicklink .carousel-quicklink-title {
   font-weight: 700;
   line-height: 1.35;
+  text-decoration: none;
 }
 
 /* trailing redirect arrow icon */
