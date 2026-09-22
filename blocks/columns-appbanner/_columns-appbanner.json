@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "App Banner Columns",
+      "title": "Columns Appbanner",
       "id": "columns-appbanner",
       "plugins": {
         "xwalk": {
