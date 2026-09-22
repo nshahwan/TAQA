@@ -5,8 +5,10 @@ Installable AEM content package for the migrated **Help & Support** page.
 ## What's in it
 
 - **`taqa-help-and-support-content.zip`** — a vault (FileVault) content package that
-  installs the page at **`/content/taqa/help-and-support`** as an xwalk / Universal
-  Editor page.
+  installs the page at **`/content/taqa/en/help-and-support/transfer`** as an xwalk /
+  Universal Editor page. The `en` and `help-and-support` ancestors are included as
+  minimal `cq:Page` nodes with `merge` filters, so they are created only if missing
+  and existing content is never clobbered.
 - **`help-and-support.jcr.xml`** — the raw JCR XML (same content as inside the zip),
   for reference / diffing.
 
@@ -23,17 +25,21 @@ package is required for the page to display.
 1. Open **AEM author** → **Tools → Deployment → Package Manager**
    (`/crx/packmgr/index.jsp`).
 2. **Upload Package** → choose `taqa-help-and-support-content.zip`.
-3. **Install**. It writes to `/content/taqa/help-and-support`
-   (filter root — nothing else is touched).
+3. **Install**. It writes the page at `/content/taqa/en/help-and-support/transfer`
+   (page filter root — nothing else under it is touched; the `en` and
+   `help-and-support` ancestors use `merge`, so siblings are left intact).
 4. Open the page in **Universal Editor** to author it. It also serves at
-   **`/help-and-support`** via the `paths.json` mapping once previewed/published.
+   **`/help-and-support/transfer`** via the `paths.json` mapping once
+   previewed/published.
 
 ## Package structure
 
 ```
-jcr_root/content/taqa/help-and-support/.content.xml   ← the page (cq:Page)
-META-INF/vault/filter.xml                             ← filter root
-META-INF/vault/properties.xml                         ← package metadata
+jcr_root/content/taqa/en/.content.xml                                  ← ancestor (cq:Page, merge)
+jcr_root/content/taqa/en/help-and-support/.content.xml                 ← ancestor (cq:Page, merge)
+jcr_root/content/taqa/en/help-and-support/transfer/.content.xml        ← the page (cq:Page)
+META-INF/vault/filter.xml                                              ← filter roots
+META-INF/vault/properties.xml                                          ← package metadata
 ```
 
 ## Regenerating
