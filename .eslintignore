@@ -1,2 +1,4 @@
 helix-importer-ui
 *.min.js
+# Generated importer bundles (concatenated build artifacts, not hand-edited)
+*.bundle.js

@@ -192,6 +192,7 @@
      and the "WE ARE HERE TO HELP" help panel (default content). Lay them out
      with the header spanning the top, the accordion on the left, and the help
      panel on the right, matching the source. */
+
   /* Match the exact centred band the boilerplate gives `.section > div`
      (max-width 1200 + 32px side padding, centred) so this two-up grid lines up
      with every other section. The `main > .section...` prefix raises specificity
