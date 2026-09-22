@@ -77,6 +77,20 @@ export default function parse(element, { document }) {
     });
   }
 
+  // The intro paragraph lives in a sibling subheader container, not inside the
+  // header — capture it too so it survives as default content.
+  const subHeader = element.querySelector("[class*='faqsection_subHeader']");
+  if (subHeader) {
+    subHeader.querySelectorAll('p').forEach((p) => {
+      const text = p.textContent.trim();
+      if (text) {
+        const para = document.createElement('p');
+        para.textContent = text;
+        defaultNodes.push(para);
+      }
+    });
+  }
+
   const filters = Array.from(element.querySelectorAll("[class*='faqsection_filterButton']"))
     .map((f) => f.textContent.trim())
     .filter(Boolean);

@@ -225,6 +225,47 @@
   }
 }
 
+/* FAQ header (first default-content wrapper): teal heading + horizontal filter
+   pills (first "All" active), matching the source. */
+.accordion-faq-container > .default-content-wrapper:first-child h2 {
+  color: var(--taqa-teal, #0ab3a1);
+}
+
+.accordion-faq-container > .default-content-wrapper:first-child ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.accordion-faq-container > .default-content-wrapper:first-child ul li {
+  margin: 0;
+  padding: 10px 22px;
+  border: 1px solid var(--taqa-card-border, rgb(172 174 185 / 40%));
+  border-radius: 50px;
+  background: #fff;
+  color: var(--text-color, #1a1a1d);
+  font-size: 14px;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.accordion-faq-container > .default-content-wrapper:first-child ul li:hover {
+  border-color: var(--taqa-teal, #0ab3a1);
+  color: var(--taqa-teal, #0ab3a1);
+}
+
+/* first pill ("All") shown as the active/selected filter */
+.accordion-faq-container > .default-content-wrapper:first-child ul li:first-child {
+  border-color: var(--taqa-teal, #0ab3a1);
+  background: var(--taqa-teal, #0ab3a1);
+  color: #fff;
+}
+
 /* help panel list: the source shows a single bullet per row, but the imported
    markup carries both a literal "•" paragraph and the <ul> disc marker. Drop
    the <ul> marker so only the single bullet remains, and lay each row out as
