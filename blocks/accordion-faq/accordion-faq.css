@@ -174,14 +174,16 @@
   display: none;
 }
 
-/* tablet and up: roomier row padding to match the source (50px 30px) */
+/* tablet and up: roomier row padding to match the source. Keep the horizontal
+   padding at 0 so questions align flush with the heading/filter pills above
+   them; the "+" toggle still sits at the right edge via space-between. */
 @media (width >= 900px) {
   .accordion-faq .accordion-faq-item-label {
-    padding: 50px 30px;
+    padding: 40px 0;
   }
 
   .accordion-faq .accordion-faq-item-body:not(:empty) {
-    padding: 0 30px 50px;
+    padding: 0 0 40px;
     font-size: 18px;
   }
 
@@ -192,6 +194,14 @@
      panel on the right, matching the source. */
   .accordion-faq-container {
     display: grid;
+
+    /* keep the two-up grid inside the same 1200px centred band as every other
+       section (boilerplate caps `.section > div` at 1200px; making the section
+       itself the grid bypasses that, so re-apply it here) */
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 32px;
+    box-sizing: border-box;
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     column-gap: 48px;
     align-items: start;
@@ -216,11 +226,15 @@
     background: var(--taqa-card-bg, #fafafa);
   }
 
-  /* left-align the header and help-panel content (boilerplate centers default
-     content; the source is left-aligned) */
-  .accordion-faq-container > .default-content-wrapper {
-    margin-inline: 0;
+  /* the grid container now supplies the 1200px band + side padding, so the
+     child wrappers must not add their own max-width/margin/padding on top
+     (that was double-indenting the accordion and misaligning it from the
+     heading). Reset them and left-align the default content. */
+  .accordion-faq-container > .default-content-wrapper,
+  .accordion-faq-container > .accordion-faq-wrapper {
     max-width: none;
+    margin-inline: 0;
+    padding-inline: 0;
     text-align: left;
   }
 }
