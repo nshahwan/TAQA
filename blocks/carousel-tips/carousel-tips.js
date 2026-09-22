@@ -59,6 +59,22 @@ export default function decorate(block) {
   block.setAttribute('aria-roledescription', 'Carousel');
 
   const rows = [...block.children];
+
+  // A leading row with no image is the eyebrow ("ENERGY SAVING TIPS") — render
+  // it as a heading inside the carousel panel, above the slides, rather than as
+  // a slide.
+  let eyebrow;
+  if (rows.length && !rows[0].querySelector('picture, img')) {
+    const eyebrowRow = rows.shift();
+    const text = eyebrowRow.textContent.trim();
+    if (text) {
+      eyebrow = document.createElement('p');
+      eyebrow.classList.add('carousel-tips-eyebrow');
+      eyebrow.textContent = text;
+    }
+    eyebrowRow.remove();
+  }
+
   const isSingleSlide = rows.length < 2;
 
   const slidesWrapper = document.createElement('ul');
@@ -107,6 +123,9 @@ export default function decorate(block) {
   });
 
   block.prepend(slidesWrapper);
+
+  // the eyebrow heading sits at the very top of the carousel panel
+  if (eyebrow) block.prepend(eyebrow);
 
   if (!isSingleSlide) bindEvents(block);
 }

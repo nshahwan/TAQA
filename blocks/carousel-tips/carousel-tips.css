@@ -9,6 +9,22 @@
   background-color: var(--taqa-lavender);
 }
 
+/* eyebrow heading ("ENERGY SAVING TIPS") inside the carousel panel, above the
+   slides — values from the source (28px / weight 500). */
+.carousel-tips .carousel-tips-eyebrow {
+  margin: 0 0 8px;
+  padding: 0 16px;
+  color: var(--text-color, #1a1a1d);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+@media (width >= 900px) {
+  .carousel-tips .carousel-tips-eyebrow {
+    font-size: 28px;
+  }
+}
+
 /* Slides track: one tile visible at a time, horizontal scroll-snap */
 .carousel-tips .carousel-tips-slides {
   list-style: none;

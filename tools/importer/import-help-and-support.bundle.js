@@ -219,6 +219,18 @@ return function parse(element, { document }) {
   }
 
   const cells = [];
+
+  // Eyebrow ("ENERGY SAVING TIPS") lives inside the carousel container on the
+  // source, above the slides. Emit it as the block's first row (a single
+  // text-only cell, no image) so it renders inside the carousel panel. The
+  // block JS treats a leading image-less row as the eyebrow, not a slide.
+  const eyebrow = element.querySelector("[class*='tipsCarousel_header']");
+  if (eyebrow && eyebrow.textContent.trim()) {
+    const p = document.createElement('p');
+    p.textContent = eyebrow.textContent.trim();
+    cells.push(['', p]);
+  }
+
   cards.forEach((card) => {
     const image = card.querySelector('img');
     const textContainer = card.querySelector("[class*='textContainer']");
@@ -244,20 +256,10 @@ return function parse(element, { document }) {
 
   const block = WebImporter.Blocks.createBlock(document, { name: 'carousel-tips', cells });
 
-  // Hoist the "ENERGY SAVING TIPS" eyebrow/header out of the block container so
-  // it survives as default content adjacent to the carousel.
-  const defaultNodes = [];
-  const header = element.querySelector("[class*='tipsCarousel_header']");
-  if (header) {
-    const text = header.textContent.trim();
-    if (text) {
-      const heading = document.createElement('h3');
-      heading.textContent = text;
-      defaultNodes.push(heading);
-    }
-  }
-
-  element.replaceWith(...defaultNodes, block);
+  // The eyebrow ("ENERGY SAVING TIPS") is emitted as the block's first row
+  // above (rendered inside the carousel panel by the block JS), so nothing is
+  // hoisted out here.
+  element.replaceWith(block);
 }
 
 })();
