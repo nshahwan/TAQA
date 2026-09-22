@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "App Promo",
+      "title": "App Promo Band",
       "id": "app-promo",
       "plugins": {
         "xwalk": {

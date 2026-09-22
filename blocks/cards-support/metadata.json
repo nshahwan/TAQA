@@ -10,15 +10,11 @@
   },
   "contentPattern": "Row of repeating support options, each an icon image plus a title and a one-line description, displayed on a dark section band.",
   "options": [],
-  "memberVariantIds": [
-    "cards-support"
-  ],
+  "memberVariantIds": ["cards-support"],
   "usage": {
-    "reuseCount": 2,
+    "reuseCount": 1,
     "pagesFound": [
-      "https://taqadistribution.com/addc/en-us/business/help-and-support/certificates",
-      "/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services"
-    ],
-    "lastUsed": "2026-09-21T07:22:39.775408Z"
+      "https://taqadistribution.com/addc/en-us/business/help-and-support/certificates"
+    ]
   }
 }

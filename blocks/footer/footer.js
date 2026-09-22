@@ -1,3 +1,5 @@
+import { loadFragment } from '../fragment/fragment.js';
+
 // Inline brand SVG social icons keyed by a token found in the link URL.
 const SOCIAL_ICONS = {
   facebook: '<svg viewBox="0 0 320 512" aria-hidden="true"><path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>',
@@ -18,25 +20,17 @@ function iconFor(href) {
  * loads and decorates the footer
  * @param {Element} block The footer block element
  */
-/**
- * Fetch the footer fragment. Metadata-independent dual-fetch: localhost / aem up
- * serves it at /content/footer.plain.html; DA/EDS production serves it at the
- * site root /footer.plain.html.
- * @returns {Promise<string>}
- */
-async function fetchFooter() {
-  let resp = await fetch('/content/footer.plain.html');
-  if (!resp.ok) resp = await fetch('/footer.plain.html');
-  return resp.ok ? resp.text() : '';
-}
-
 export default async function decorate(block) {
-  const html = await fetchFooter();
-  if (!html) return;
+  // metadata-independent: /content first (localhost), then root (DA/EDS prod)
+  let fragment = await loadFragment('/content/footer');
+  if (!fragment) {
+    fragment = await loadFragment('/footer');
+  }
+  if (!fragment) return;
 
   block.textContent = '';
   const footer = document.createElement('div');
-  footer.innerHTML = html;
+  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
   const sections = [...footer.children];
 

@@ -10,15 +10,11 @@
   },
   "contentPattern": "Full-width photographic banner image followed by an eyebrow label, an H1 heading, and an intro paragraph.",
   "options": [],
-  "memberVariantIds": [
-    "hero-support"
-  ],
+  "memberVariantIds": ["hero-support"],
   "usage": {
-    "reuseCount": 2,
+    "reuseCount": 1,
     "pagesFound": [
-      "https://taqadistribution.com/addc/en-us/business/help-and-support/certificates",
-      "/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services"
-    ],
-    "lastUsed": "2026-09-21T07:22:39.775408Z"
+      "https://taqadistribution.com/addc/en-us/business/help-and-support/certificates"
+    ]
   }
 }

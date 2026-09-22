@@ -14,14 +14,6 @@
   flex-direction: column;
 }
 
-/* Section heading "LOOKING FOR ANSWERS ?" — teal, uppercase (matches
-   taqadistribution.com). The heading is default content in the same section
-   as the accordion block, so scope through the section container. */
-.accordion-faq-container .default-content-wrapper h4 {
-  color: var(--taqa-teal);
-  text-transform: uppercase;
-}
-
 /* category filter pills */
 .accordion-faq .accordion-faq-filters {
   display: flex;
@@ -45,13 +37,13 @@
 }
 
 .accordion-faq .accordion-faq-filter:hover {
-  border-color: var(--taqa-teal);
-  color: var(--taqa-teal);
+  border-color: var(--taqa-purple);
+  color: var(--taqa-purple);
 }
 
 .accordion-faq .accordion-faq-filter.active {
-  border-color: var(--taqa-teal);
-  background: var(--taqa-teal);
+  border-color: var(--taqa-purple);
+  background: var(--taqa-purple);
   color: #fff;
 }
 

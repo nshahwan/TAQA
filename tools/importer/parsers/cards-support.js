@@ -2,72 +2,64 @@
 /* global WebImporter */
 /**
  * Parser for cards-support. Base: cards.
- * Source: help-and-support template — .cards-support.block
- * Generated: 2026-09-21
+ * Source: help-and-support template — div[class*='customerSupport_subContainer']
+ * Generated: 2026-09-16
  *
- * Cards library convention: 2 columns, multiple rows.
+ * Cards library structure: 2 columns, multiple rows.
  *   Row 1: block name.
- *   Each card row: [ image/icon | rich text (heading + description + CTA) ].
- *   An image or text cell may be empty, but the empty cell must still exist.
+ *   Each card row: [ image/icon | text content (title + description + CTA) ].
  *
- * EDS-rendered DOM: the block is a <div class="cards-support block"> containing a
- * <ul>. Each <li> is a card with:
- *   - .cards-support-card-icon > picture/img  (the card icon)
- *   - .cards-support-card-body > h6 > a[href] (the CTA-linked heading)
- *   - .cards-support-card-body > p            (the description)
- * 4 cards: CHAT WITH US, CONNECT VIA VIDEO, CALL US: 8002332, FIND A LOCATION.
- * The heading's <a href> is the CTA and must be preserved.
+ * TAQA DOM: each card is an <a class="supportOption_supportDiv" href> containing
+ * an icon <img> (base64 SVG), a title <h6> and a description <p>. The card's own
+ * href is the CTA (chat / video / tel / branch locator).
  */
 export default function parse(element, { document }) {
-  // Collect card items. The block wraps cards in <li> items.
-  let cards = Array.from(element.querySelectorAll(':scope > ul > li'));
+  // Cards: the support option anchors.
+  let cards = Array.from(element.querySelectorAll('[class*="supportOption_supportDiv"]'));
   if (cards.length === 0) {
-    cards = Array.from(element.querySelectorAll('ul > li'));
-  }
-  if (cards.length === 0) {
-    cards = Array.from(element.querySelectorAll('li'));
+    cards = Array.from(element.querySelectorAll('a[class*="support"], :scope > a[href]'));
   }
 
   const cells = [];
 
   cards.forEach((card) => {
-    // Icon: prefer the <picture>, fall back to the <img>.
-    const iconContainer = card.querySelector('[class*="card-icon"]') || card;
-    const image = iconContainer.querySelector('picture') || iconContainer.querySelector('img');
+    const image = card.querySelector('img');
+    const title = card.querySelector('h1, h2, h3, h4, h5, h6');
+    // Description paragraph (the innermost text <p>).
+    const descContainer = card.querySelector('[class*="supportSubHeader"]');
+    const description = descContainer
+      ? (descContainer.querySelector('p') || descContainer)
+      : card.querySelector('[class*="supportText"] p');
 
-    // Body: heading (with CTA link) + description.
-    const body = card.querySelector('[class*="card-body"]') || card;
-    const heading = body.querySelector('h1, h2, h3, h4, h5, h6');
-    const description = body.querySelector('p');
+    // The anchor itself carries the CTA href.
+    const href = card.matches('a[href]')
+      ? card.getAttribute('href')
+      : (card.querySelector('a[href]') && card.querySelector('a[href]').getAttribute('href'));
 
-    if (!image && !heading && !description) return;
+    if (!image && !title && !description) return;
 
     const contentCell = [];
-
-    if (heading) {
-      // Preserve the CTA link on the heading.
-      const link = heading.querySelector('a[href]');
-      const href = link && link.getAttribute('href') ? link.getAttribute('href').trim() : '';
-      const text = heading.textContent.trim();
-      const h = document.createElement(/^H[1-6]$/.test(heading.tagName) ? heading.tagName : 'h3');
-      if (href) {
+    if (title) {
+      const cleanTitle = title.textContent.trim();
+      if (href && href.trim()) {
+        // Preserve the CTA link on the title.
         const a = document.createElement('a');
-        a.setAttribute('href', href);
-        a.textContent = text;
+        a.setAttribute('href', href.trim());
+        a.textContent = cleanTitle;
+        const h = document.createElement(title.tagName.match(/^H[1-6]$/) ? title.tagName : 'h3');
         h.append(a);
+        contentCell.push(h);
       } else {
-        h.textContent = text;
+        contentCell.push(title);
       }
-      contentCell.push(h);
     }
-
     if (description) {
       const p = document.createElement('p');
       p.textContent = description.textContent.trim();
       contentCell.push(p);
     }
 
-    // 2-column row: [ icon image | rich text content ]. Empty cell kept if absent.
+    // 2-column row: [ icon/image | text content ].
     cells.push([image || '', contentCell.length ? contentCell : '']);
   });
 

@@ -2,25 +2,19 @@
 /* global WebImporter */
 
 /**
- * Transformer: taqa (taqadistribution.com / ADDC) section breaks + metadata.
+ * Transformer: taqadistribution.com section breaks + section metadata.
  *
- * The help-and-support template defines 5 sections in page-templates.json, so
+ * The help-and-support template defines 4 sections in page-templates.json, so
  * section markup is required. This transformer is template-agnostic: it reads
  * `payload.template.sections` and, for each section, uses the section's
  * `selector` array (from page-templates.json, itself derived from the captured
  * DOM) to locate the section element under `main`.
  *
- * Section boundaries verified against this page's migration-work/cleaned.html
- * (EDS-rendered ADDC demo-environment source); each is a direct `.section`
- * container child of <main>:
- *   - .hero-support-container .................... line 222  (rc2 hero, no style)
- *   - .cards-quicklink-container (multi-block) ... line 241  (rc3 apps-and-tips, no style)
- *   - .accordion-faq-container (+ default) ....... line 486  (rc4 faq, no style)
- *   - .dark.section.cards-support-container ...... line 582  (rc5 support-cards, style: dark)
- *   - trailing .section (empty) .................. line 646  (rc6 trailing, no style)
- *
- * Expected markup for these 5 sections: 4 <hr> breaks (before every section
- * except the first) and 1 Section Metadata block (only rc5 carries style:dark).
+ * Section boundaries verified against migration-work/cleaned.html:
+ *   - headerFrame_herosection ....... line 363  (rc2 Hero, no style)
+ *   - customCarousel_container ...... line 371  (rc3 Find Your Solution, no style)
+ *   - faqPanel_container ............ line 407  (rc4 Looking For Answers, no style)
+ *   - customerSupport_container ..... line 701  (rc5 Customer Support, style: dark)
  *
  * Why both hooks: block parsers run *between* beforeTransform and
  * afterTransform and call element.replaceWith(block) on the exact element a

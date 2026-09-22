@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Cards Support",
+      "title": "Support Cards",
       "id": "cards-support",
       "plugins": {
         "xwalk": {

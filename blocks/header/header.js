@@ -93,14 +93,16 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 }
 
 /**
- * Fetch the nav fragment. Metadata-independent dual-fetch: localhost / aem up
- * serves it at /content/nav.plain.html; DA/EDS production serves it at the site
- * root /nav.plain.html.
+ * Fetch the nav fragment. Localhost / aem up serves it at /content/nav.plain.html;
+ * DA/EDS production serves it at `${navPath}.plain.html`.
+ * @param {string} navPath
  * @returns {Promise<string>}
  */
-async function fetchNav() {
+async function fetchNav(navPath) {
   let resp = await fetch('/content/nav.plain.html');
-  if (!resp.ok) resp = await fetch('/nav.plain.html');
+  if (!resp.ok) {
+    resp = await fetch(`${navPath}.plain.html`);
+  }
   return resp.ok ? resp.text() : '';
 }
 
@@ -109,7 +111,9 @@ async function fetchNav() {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  const html = await fetchNav();
+  const navMeta = block.closest('.header-wrapper')?.dataset?.navPath;
+  const navPath = navMeta || '/nav';
+  const html = await fetchNav(navPath);
 
   const fragment = document.createElement('div');
   fragment.innerHTML = html;

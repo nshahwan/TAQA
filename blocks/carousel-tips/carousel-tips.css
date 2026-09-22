@@ -6,20 +6,7 @@
   position: relative;
   box-sizing: border-box;
   padding: 24px;
-  background-color: var(--taqa-mint);
-}
-
-/* "ENERGY SAVING TIPS" eyebrow inside the panel — teal, uppercase, tracked,
-   centered above the slides (matches taqadistribution.com). */
-.carousel-tips .carousel-tips-eyebrow {
-  margin: 8px 0 24px;
-  color: var(--taqa-teal);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.3;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-align: center;
+  background-color: var(--taqa-lavender);
 }
 
 /* Slides track: one tile visible at a time, horizontal scroll-snap */
@@ -38,9 +25,9 @@
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  text-align: center;
+  text-align: left;
   box-sizing: border-box;
   padding: 8px 16px 16px;
 }
@@ -60,8 +47,7 @@
 .carousel-tips .carousel-tips-slide-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
   max-width: 340px;
   margin: 0;
 }
@@ -94,9 +80,9 @@
   align-items: center;
   justify-content: center;
   padding: 15px 25px;
-  border: 1px solid var(--taqa-teal);
+  border: 1px solid var(--taqa-purple);
   border-radius: 80px;
-  background-color: var(--taqa-teal);
+  background-color: var(--taqa-purple);
   color: #fff;
   font-family: var(--body-font-family);
   font-size: 10px;
@@ -122,7 +108,7 @@
   margin: 20px 0 0;
   padding: 0 16px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
 }
 
@@ -138,12 +124,11 @@
 }
 
 .carousel-tips .carousel-tips-slide-indicator button:hover {
-  background-color: var(--taqa-teal);
+  background-color: var(--taqa-purple);
 }
 
-/* active dot (current slide) — solid teal */
 .carousel-tips .carousel-tips-slide-indicator button[disabled] {
-  background-color: var(--taqa-teal);
+  background-color: var(--text-color);
   cursor: default;
 }
 

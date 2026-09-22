@@ -1,16 +1,11 @@
 /* eslint-disable */
 /* global WebImporter */
 
-// Output target: 'index' (site home) or 'deep' (original source path).
-// Flip to 'deep' to regenerate the deep-path copy identical to index.
-const OUTPUT_MODE = 'index';
-
 // PARSER IMPORTS
 import heroSupportParser from './parsers/hero-support.js';
 import cardsQuicklinkParser from './parsers/cards-quicklink.js';
-import appPromoParser from './parsers/app-promo.js';
-import carouselTipsParser from './parsers/carousel-tips.js';
 import accordionFaqParser from './parsers/accordion-faq.js';
+import carouselTipsParser from './parsers/carousel-tips.js';
 import cardsSupportParser from './parsers/cards-support.js';
 
 // TRANSFORMER IMPORTS
@@ -20,120 +15,32 @@ import sectionsTransformer from './transformers/taqa-sections.js';
 // PAGE TEMPLATE CONFIGURATION - Embedded from page-templates.json
 const PAGE_TEMPLATE = {
   name: 'help-and-support',
-  description:
-    'Help & Support page: hero, quick-link cards, app promo, energy-tips carousel, filterable FAQ accordion, and support-channel cards',
+  description: "Help & Support interior page: an angled photographic page-intro hero, a 'Find Your Solution' section with quick-link certificate tiles, a 'Looking For Answers' section with an FAQ accordion plus an energy-saving-tips promo carousel and a help link panel, and a dark customer-support section with icon cards.",
   urls: [
-    'https://main--demoenvironment--lmanning2.aem.live/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services',
+    'https://taqadistribution.com/addc/en-us/business/help-and-support/certificates',
+    'https://taqadistribution.com/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services',
   ],
   blocks: [
-    { name: 'hero-support', instances: ['.hero-support.block', '.hero-support'] },
-    { name: 'cards-quicklink', instances: ['.cards-quicklink.block', '.cards-quicklink'] },
-    { name: 'app-promo', instances: ['.app-promo.block', '.app-promo'] },
-    { name: 'carousel-tips', instances: ['.carousel-tips.block', '.carousel-tips'] },
-    { name: 'accordion-faq', instances: ['.accordion-faq.block', '.accordion-faq'] },
-    { name: 'cards-support', instances: ['.cards-support.block', '.cards-support'] },
+    { name: 'hero-support', instances: ["div[class*='headerFrame_herosection']"] },
+    { name: 'cards-quicklink', instances: ["div[class*='customCarousel_container']"] },
+    { name: 'accordion-faq', instances: ["div[class*='faqsection_faqContainer']"] },
+    { name: 'carousel-tips', instances: ["div[class*='tipsCarousel_carousel']"] },
+    { name: 'cards-support', instances: ["div[class*='customerSupport_subContainer']"] },
   ],
   sections: [
-    {
-      id: 'rc2',
-      name: 'hero',
-      selector: ['.hero-support-container', '.section.hero-support-container'],
-      style: null,
-      blocks: ['hero-support'],
-      defaultContent: [],
-    },
-    {
-      id: 'rc3',
-      name: 'apps-and-tips',
-      selector: [
-        '.cards-quicklink-container',
-        '.section.cards-quicklink-container.app-promo-container.carousel-tips-container',
-      ],
-      style: null,
-      blocks: ['cards-quicklink', 'app-promo', 'carousel-tips'],
-      defaultContent: [],
-    },
-    {
-      id: 'rc4',
-      name: 'faq',
-      selector: ['.accordion-faq-container', '.section.accordion-faq-container'],
-      style: null,
-      blocks: ['accordion-faq'],
-      defaultContent: [
-        '.accordion-faq-container h4',
-        '.accordion-faq-container h5',
-        '.accordion-faq-container > div > ul',
-      ],
-    },
-    {
-      id: 'rc5',
-      name: 'support-cards',
-      selector: ['.cards-support-container', '.dark.section.cards-support-container'],
-      style: 'dark',
-      blocks: ['cards-support'],
-      defaultContent: [],
-    },
-    {
-      id: 'rc6',
-      name: 'trailing',
-      selector: ['.section:nth-of-type(5)', 'main > div.section:last-child'],
-      style: null,
-      blocks: [],
-      defaultContent: [],
-    },
+    { id: 'rc2', name: 'Hero', selector: ["div[class*='headerFrame_herosection']"], style: null, blocks: ['hero-support'], defaultContent: [] },
+    { id: 'rc3', name: 'Find Your Solution', selector: ["div[class*='customCarousel_container']"], style: null, blocks: ['cards-quicklink'], defaultContent: ["div[class*='customCarousel_leftHeaderContainer']"] },
+    { id: 'rc4', name: 'Looking For Answers', selector: ["div[class*='faqPanel_container']"], style: null, blocks: ['accordion-faq', 'carousel-tips'], defaultContent: ["div[class*='faqsection_header']", "div[class*='faqPanel_quickLinkPanel']"] },
+    { id: 'rc5', name: 'Customer Support', selector: ["div[class*='customerSupport_container']"], style: 'dark', blocks: ['cards-support'], defaultContent: [] },
   ],
 };
-
-// Local-asset map: media hashes → DAM absolute paths. The assets are installed
-// into the AEM DAM at /content/dam/taqa/ (see docs/content-handoff/dam-package),
-// so the page must reference them by their absolute DAM path. Relative
-// `images/…` paths break on the rendered page because they resolve against the
-// page's own folder, not the site root.
-const DAM_ROOT = '/content/dam/taqa';
-const LOCAL_ASSETS = {
-  // Energy-saving-tips carousel icons
-  media_137a60440c7b209f8c918b7d928fbb80af122b5f4: `${DAM_ROOT}/tip-air-conditioning.png`,
-  media_1d577f14e6d2f7a703eba5610fef521a650adc40e: `${DAM_ROOT}/tip-save-electricity.png`,
-  media_194ed09cd22f0119aaa78d3381a8e7cbe5d37f1cc: `${DAM_ROOT}/tip-efficient-lighting.png`,
-  media_1eb9fb72ad75900bd892b55d86591bef932450842: `${DAM_ROOT}/tip-wise-appliances.png`,
-  media_11d2b0624ab63550ffea120516fe70a3e32f777ed: `${DAM_ROOT}/tip-save-water-home.png`,
-  media_1b20cd7c88c87d6b9025ea040ad9ca504f5c0a8c3: `${DAM_ROOT}/tip-save-water-outside.png`,
-  media_1de8a94791110a5e581bc70db5f833b012bcaff04: `${DAM_ROOT}/tip-water-usage.png`,
-  // Support-card icons
-  media_1f88f93aa993c9c81c91885673fa6a5b2754bd41b: `${DAM_ROOT}/support-chat.svg`,
-  media_1373dfb1d3c8e65fe26c6721b5551d95e6ca26587: `${DAM_ROOT}/support-video.svg`,
-  media_19618abda8537e67dceb703ddf1a5851547b74207: `${DAM_ROOT}/support-call.svg`,
-  media_1e78fab40cc60604540f1024b818dd7fb383593aa: `${DAM_ROOT}/support-location.svg`,
-  // Hero banner + app-promo store badges
-  media_1576572bbdef583ac593009205108c2d2330bd4cb: `${DAM_ROOT}/hero-help-support.png`,
-  media_15eaf62a9b3eb0799902062f3f532d150b64dcc49: `${DAM_ROOT}/app-store-badge.png`,
-  media_1bd35ddb42d54491401ed9b8abecabf872f6d55ee: `${DAM_ROOT}/google-play-badge.png`,
-};
-
-/**
- * Re-point <img> src values at the local downloaded assets. Runs after
- * WebImporter.rules.adjustImageUrls so it has the final absolute URLs; matches
- * on the media hash in the path and swaps in the local relative path.
- * @param {Element} main
- */
-function rewriteLocalAssets(main) {
-  main.querySelectorAll('img[src]').forEach((img) => {
-    const src = img.getAttribute('src') || '';
-    const hash = (src.match(/media_[a-z0-9]+/) || [])[0];
-    if (hash && LOCAL_ASSETS[hash]) {
-      img.setAttribute('src', LOCAL_ASSETS[hash]);
-      img.removeAttribute('srcset');
-    }
-  });
-}
 
 // PARSER REGISTRY
 const parsers = {
   'hero-support': heroSupportParser,
   'cards-quicklink': cardsQuicklinkParser,
-  'app-promo': appPromoParser,
-  'carousel-tips': carouselTipsParser,
   'accordion-faq': accordionFaqParser,
+  'carousel-tips': carouselTipsParser,
   'cards-support': cardsSupportParser,
 };
 
@@ -201,19 +108,8 @@ export default {
     WebImporter.rules.transformBackgroundImages(main, document);
     WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
 
-    // Re-point carousel/support icons at the local downloaded assets.
-    rewriteLocalAssets(main);
-
-    // Output path. Defaults to the site index (main page). Set IMPORT_DEEP_PATH=1
-    // (bundled below via OUTPUT_MODE) to emit at the original deep source path
-    // instead, so the deep-path copy can be regenerated to match index.
-    const pageUrl = params.originalURL || url;
-    const deepPath = new URL(pageUrl).pathname
-      .replace(/\/$/, '')
-      .replace(/\.html?$/, '');
-    const path = OUTPUT_MODE === 'deep'
-      ? WebImporter.FileUtils.sanitizePath(deepPath)
-      : WebImporter.FileUtils.sanitizePath('/index');
+    const rawPath = new URL(params.originalURL).pathname.replace(/\/$/, '').replace(/\.html$/, '');
+    const path = WebImporter.FileUtils.sanitizePath(rawPath || '/index');
 
     return [{
       element: main,

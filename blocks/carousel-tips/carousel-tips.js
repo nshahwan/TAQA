@@ -58,22 +58,6 @@ export default function decorate(block) {
   block.setAttribute('role', 'region');
   block.setAttribute('aria-roledescription', 'Carousel');
 
-  // Pull the "ENERGY SAVING TIPS" eyebrow (authored as a sibling
-  // default-content block in the tips column) into the carousel panel so it
-  // sits on the mint background above the slides.
-  let eyebrow;
-  const tipsCol = block.closest('.app-promo-tips');
-  const headingWrapper = tipsCol && tipsCol.querySelector('.default-content-wrapper');
-  if (headingWrapper) {
-    const headingEl = headingWrapper.querySelector('p, h1, h2, h3, h4, h5, h6');
-    if (headingEl) {
-      eyebrow = document.createElement('p');
-      eyebrow.className = 'carousel-tips-eyebrow';
-      eyebrow.textContent = headingEl.textContent.trim();
-    }
-    headingWrapper.remove();
-  }
-
   const rows = [...block.children];
   const isSingleSlide = rows.length < 2;
 
@@ -123,9 +107,6 @@ export default function decorate(block) {
   });
 
   block.prepend(slidesWrapper);
-
-  // Eyebrow heading sits at the very top of the panel, above the slides.
-  if (eyebrow) block.prepend(eyebrow);
 
   if (!isSingleSlide) bindEvents(block);
 }

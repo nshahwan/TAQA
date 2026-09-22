@@ -13,97 +13,25 @@
  * is recreated here as a ::after glyph on each tile.
  */
 
-/* Horizontal-scroll carousel: cards in a single row that scrolls, with prev/next
-   arrows above (matches the source "Find your solution" slider). */
-.cards-quicklink {
-  position: relative;
-}
-
-.cards-quicklink .cards-quicklink-viewport {
-  overflow: hidden;
-}
-
-.cards-quicklink .cards-quicklink-track {
+.cards-quicklink > ul {
   list-style: none;
   margin: 0;
-  padding: 4px;
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;                           /* Firefox: hide scrollbar */
-}
-
-.cards-quicklink .cards-quicklink-track::-webkit-scrollbar {
-  display: none;                                   /* WebKit: hide scrollbar */
-}
-
-/* Prev / next arrow controls, aligned to the right above the track */
-.cards-quicklink .cards-quicklink-controls {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin: 0 0 24px;
-}
-
-.cards-quicklink .cards-quicklink-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
   padding: 0;
-  border-radius: 50%;
-  border: 1px solid var(--taqa-teal);
-  background: #fff;
-  color: var(--taqa-teal);
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
-}
-
-/* disabled state before hover state to satisfy no-descending-specificity */
-.cards-quicklink .cards-quicklink-arrow:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-
-.cards-quicklink .cards-quicklink-arrow:hover:not(:disabled) {
-  background: var(--taqa-navy);
-  border-color: var(--taqa-navy);
-  color: #fff;
-}
-
-.cards-quicklink .cards-quicklink-arrow::before {
-  content: "";
-  width: 20px;
-  height: 20px;
-  background-color: currentcolor;
-  mask: center / 20px 20px no-repeat var(--arrow-mask);
-}
-
-.cards-quicklink .cards-quicklink-arrow-prev {
-  --arrow-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 12H5M12 19l-7-7 7-7'/%3E%3C/svg%3E");
-}
-
-/* next arrow: filled teal + right-pointing mask */
-.cards-quicklink .cards-quicklink-arrow-next {
-  background: var(--taqa-teal);
-  color: #fff;
-
-  --arrow-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E");
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 /* Each tile (source: the card <span> inside the link) */
-.cards-quicklink .cards-quicklink-track > li {
+.cards-quicklink > ul > li {
   position: relative;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  flex: 0 0 auto;
-  width: 300px;
-  scroll-snap-align: start;
-  min-height: 200px;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 179px;
   padding: 35px 30px 20px;
   background-color: var(--taqa-card-bg);          /* #fafafa */
   border: 2px solid rgb(172 174 185 / 40%);       /* --taqa-card-border */
@@ -112,7 +40,7 @@
 }
 
 /* hovering the tile highlights its border in brand purple */
-.cards-quicklink .cards-quicklink-track > li:hover {
+.cards-quicklink > ul > li:hover {
   border-color: var(--taqa-purple);
 }
 
@@ -122,7 +50,7 @@
 }
 
 /* Collapse the empty icon cell left behind by the import */
-.cards-quicklink .cards-quicklink-track > li > .cards-quicklink-card-body:empty {
+.cards-quicklink > ul > li > .cards-quicklink-card-body:empty {
   display: none;
 }
 
@@ -138,20 +66,16 @@
   letter-spacing: 0.2px;
   color: var(--text-color);                       /* #1a1a1d */
   text-decoration: none;
-  transition: color 0.2s ease, font-weight 0.2s ease;
+  transition: color 0.2s ease;
 }
 
-/* Hover: the card title turns bold purple, reverting to black on hover-away.
-   font-weight/color transition; !important overrides global .button styling. */
-.cards-quicklink .cards-quicklink-card-body a:hover,
-.cards-quicklink .cards-quicklink-track > li:hover .cards-quicklink-card-body a:any-link {
-  color: var(--link-hover-color) !important;      /* #6b42d1 */
-  font-weight: 700;
+.cards-quicklink .cards-quicklink-card-body a:hover {
+  color: var(--link-hover-color);                 /* #6b42d1 */
   text-decoration: none;
 }
 
 /* Corner arrow (source: 20x20 up-right SVG, fill #1A1A1D, align-self flex-end) */
-.cards-quicklink .cards-quicklink-track > li::after {
+.cards-quicklink > ul > li::after {
   content: "";
   align-self: flex-end;
   margin-top: auto;
@@ -170,9 +94,10 @@
   inset: 0;
 }
 
-/* Desktop: slightly wider cards to match the source proportions */
+/* Desktop: fixed-width tiles, left-aligned (matches source 310px cards) */
 @media (width >= 900px) {
-  .cards-quicklink .cards-quicklink-track > li {
-    width: 320px;
+  .cards-quicklink > ul > li {
+    flex: 0 0 310px;
+    width: 310px;
   }
 }

@@ -30,14 +30,9 @@
     ]
   },
   "usage": {
-    "pagesUsing": [
-      "/index"
-    ],
-    "reuseCount": 3,
-    "lastUsed": "2026-09-21T07:22:39.775408Z",
-    "note": "Used by home quick-links feature strip (rc4c2, 6 items) and 'Why choose Nile Air?' benefits grid (rc4c3, 6 items). Both are icon + short linked label.",
-    "pagesFound": [
-      "/addc/en-us/residential/help-and-support/transfer-and-removal-of-electricity-services"
-    ]
+    "pagesUsing": ["/index"],
+    "reuseCount": 2,
+    "lastUsed": "2026-07-14T12:46:00.000Z",
+    "note": "Used by home quick-links feature strip (rc4c2, 6 items) and 'Why choose Nile Air?' benefits grid (rc4c3, 6 items). Both are icon + short linked label."
   }
 }

@@ -2,30 +2,28 @@
 /* global WebImporter */
 
 /**
- * Transformer: taqa (taqadistribution.com / ADDC) site-wide cleanup.
+ * Transformer: taqadistribution.com site-wide cleanup.
  *
- * The authorable page content lives inside <main>. Everything else is site
- * shell / chrome an author would never create when authoring a page (top
- * header nav, primary navigation bar, mega-menu dropdown panels, the global
- * footer, cookie-consent widgets) plus purely structural / non-content nodes.
- * Header/nav and footer are handled by their own orchestrators.
+ * taqadistribution.com is a Next.js SPA. The authorable page content lives
+ * inside <main>. Everything else is site shell / chrome an author would never
+ * create when authoring a page (top header nav, primary navigation bar, the
+ * help/locations mega-menu dropdown panels, the global footer, the OneTrust
+ * cookie-consent widget) plus purely structural / non-content nodes
+ * (skip link, empty shadow-root host, route announcer, modal root, scripts,
+ * iframes, links, noscript, base64 stylesheets). Header/nav and footer are
+ * handled by their own orchestrators.
  *
- * This site has been migrated from two source shells, so the transformer keeps
- * selectors for both (each set is harmless where it doesn't match):
- *
- * 1. Next.js SPA shell (original taqadistribution.com): hashed CSS-module
- *    classes (header_header__*, primaryNavigation_container__*,
- *    dropdown_dropdown__*, footer_footer__*), OneTrust, next-route-announcer,
- *    #modalRoot, DAMEG accessibility overlay, AOS scroll-animation artifacts.
- *
- * 2. EDS-rendered shell (help-and-support template, ADDC demo-environment).
- *    Verified in this page's migration-work/cleaned.html:
- *      - <header class="header-wrapper"> ............... line 2
- *      - <footer class="footer-wrapper"> ............... line 649
- *    Both are siblings of <main> (header lines 2-220, footer lines 649-752),
- *    so they are only reachable when the importer passes the full document;
- *    they are removed defensively. No cookie/consent widget, no
- *    script/style/link/iframe/noscript nodes are present in this cleaned.html.
+ * All selectors are verified against migration-work/cleaned.html of the page
+ * being migrated:
+ *   - a[href="#main-content"] skip link ............... line 10
+ *   - header.header_header__9OzUC (top nav) ........... line 11
+ *   - .primaryNavigation_container__NM_X7 ............. line 48
+ *   - .dropdown_dropdown__4_Gn0 (mega-menu panels) .... lines 98, 209, 225, 290, 340
+ *   - .footer_footer__Im9Y3 ........................... line 758
+ *   - #onetrust-consent-sdk (cookie banner) ........... line 871
+ *   - .dameg-shadow-root-host (empty) ................. line 2
+ *   - next-route-announcer ............................ line 4
+ *   - #modalRoot ...................................... line 7
  */
 const TransformHook = { beforeTransform: 'beforeTransform', afterTransform: 'afterTransform' };
 
@@ -57,18 +55,12 @@ export default function transform(hookName, element, payload) {
     WebImporter.DOMUtils.remove(element, [
       'a[href="#main-content"]',
       'header',
-      '.header-wrapper',
       "[class*='header_header']",
       "[class*='header_navigationbar']",
       "[class*='primaryNavigation_container']",
       "[class*='primaryNavigationMobile_container']",
       "[class*='primaryNavigationMobile_mainContainer']",
       "[class*='dropdown_dropdown']",
-      // Global footer — migrated separately by the footer orchestrator. The
-      // EDS-rendered page uses <footer class="footer-wrapper"> (a body sibling);
-      // remove it so its content does not leak into the imported page.
-      'footer',
-      '.footer-wrapper',
       "[class*='footer_footer']",
       '.dameg-shadow-root-host',
       '.damegCursor',
