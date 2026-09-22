@@ -108,8 +108,20 @@
    the source. Stacks on mobile.
    --------------------------------------------------------------------------- */
 @media (width >= 900px) {
-  .columns-appbanner-container.carousel-tips-container {
+  /* Match the same centred 1200px+32px band as every other section (see the
+     accordion-faq note). The `main > .section...` prefix beats the boilerplate
+     `main > .section { margin: 40px 0 }` so the row centres instead of going
+     full-bleed, keeping the promo's left edge and the tips panel's right edge
+     aligned with the FAQ row below. */
+  main > .section.columns-appbanner-container.carousel-tips-container {
     display: grid;
+
+    /* content-box (boilerplate default) so the row spans the same 1264px outer
+       band at x=88 as every other section — matches the accordion-faq row below
+       and keeps left/right edges aligned. */
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 32px;
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     column-gap: 20px;
     align-items: stretch;
@@ -117,12 +129,16 @@
 
   .columns-appbanner-container.carousel-tips-container > .columns-appbanner-wrapper {
     grid-column: 1;
+    max-width: none;
     margin: 0;
+    padding: 0;
   }
 
   .columns-appbanner-container.carousel-tips-container > .carousel-tips-wrapper {
     grid-column: 2;
+    max-width: none;
     margin: 0;
+    padding: 0;
   }
 
   /* let both panels fill the row height equally */

@@ -192,16 +192,21 @@
      and the "WE ARE HERE TO HELP" help panel (default content). Lay them out
      with the header spanning the top, the accordion on the left, and the help
      panel on the right, matching the source. */
-  .accordion-faq-container {
+  /* Match the exact centred band the boilerplate gives `.section > div`
+     (max-width 1200 + 32px side padding, centred) so this two-up grid lines up
+     with every other section. The `main > .section...` prefix raises specificity
+     above the boilerplate `main > .section { margin: 40px 0 }` rule, which would
+     otherwise cancel the auto-centering and pin the grid to the viewport edge. */
+  main > .section.accordion-faq-container {
     display: grid;
 
-    /* keep the two-up grid inside the same 1200px centred band as every other
-       section (boilerplate caps `.section > div` at 1200px; making the section
-       itself the grid bypasses that, so re-apply it here) */
+    /* content-box (the boilerplate default) so max-width 1200 + 32px padding
+       yields the same 1264px outer band at x=88 as every other section — do NOT
+       set box-sizing: border-box here or the row shrinks 32px on each side and
+       stops aligning with the neighbouring sections. */
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 32px;
-    box-sizing: border-box;
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     column-gap: 48px;
     align-items: start;
