@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Accordion / FAQ",
+      "title": "Accordion Faq",
       "id": "accordion-faq",
       "plugins": {
         "xwalk": {

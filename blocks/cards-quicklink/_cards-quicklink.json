@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Quicklink Cards",
+      "title": "Cards Quicklink",
       "id": "cards-quicklink",
       "plugins": {
         "xwalk": {

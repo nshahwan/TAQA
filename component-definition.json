@@ -83,7 +83,7 @@
       "id": "blocks",
       "components": [
         {
-          "title": "Accordion / FAQ",
+          "title": "Accordion Faq",
           "id": "accordion-faq",
           "plugins": {
             "xwalk": {
@@ -113,7 +113,7 @@
           }
         },
         {
-          "title": "App Promo Band",
+          "title": "App Promo",
           "id": "app-promo",
           "plugins": {
             "xwalk": {
@@ -188,7 +188,7 @@
           }
         },
         {
-          "title": "Quicklink Cards",
+          "title": "Cards Quicklink",
           "id": "cards-quicklink",
           "plugins": {
             "xwalk": {
@@ -218,7 +218,7 @@
           }
         },
         {
-          "title": "Support Cards",
+          "title": "Cards Support",
           "id": "cards-support",
           "plugins": {
             "xwalk": {
@@ -398,7 +398,7 @@
           }
         },
         {
-          "title": "Tips Carousel",
+          "title": "Carousel Tips",
           "id": "carousel-tips",
           "plugins": {
             "xwalk": {
@@ -578,7 +578,7 @@
           }
         },
         {
-          "title": "Hero — Residential",
+          "title": "Hero \u2014 Residential",
           "id": "hero-residential",
           "plugins": {
             "xwalk": {
@@ -593,7 +593,7 @@
           }
         },
         {
-          "title": "Hero — Support",
+          "title": "Hero Support",
           "id": "hero-support",
           "plugins": {
             "xwalk": {

@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Tips Carousel",
+      "title": "Carousel Tips",
       "id": "carousel-tips",
       "plugins": {
         "xwalk": {
