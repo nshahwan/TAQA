@@ -1,9 +1,22 @@
 {
   "mappings": [
-   "/content/taqa/en:/"
+    "/content/taqa/language-masters/en:/",
+    "/content/taqa/language-masters/en/:/en/",
+    "/content/taqa/language-masters/fr/:/fr/",
+    "/content/taqa/language-masters/fr:/fr",
+    "/content/taqa/language-masters/es/:/es/",
+    "/content/taqa/language-masters/es:/es",
+    "/content/taqa/language-masters/ja/:/ja/",
+    "/content/taqa/language-masters/ja:/ja",
+    "/content/taqa/language-masters/de/:/de/",
+    "/content/taqa/language-masters/de:/de",
+    "/content/taqa/configuration:/.helix/config.json",
+    "/content/taqa/metadata:/metadata.json",
+    "/content/taqa/redirects:/redirects.json",
+    "/content/taqa/placeholders:/placeholders.json"
   ],
   "includes": [
-    "/content/taqa/en",
-    "/content/dam/taqa/en"
+    "/content/taqa/",
+    "/content/dam/taqa/"
   ]
 }
