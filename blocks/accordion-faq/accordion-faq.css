@@ -208,12 +208,12 @@
   }
 
   /* help panel (last default-content wrapper) sits in the right column as a
-     light boxed panel, like the source */
+     light-grey boxed panel, like the source (#fafafa) */
   .accordion-faq-container > .default-content-wrapper:last-child {
     grid-column: 2;
     align-self: start;
-    padding: 32px;
-    background: var(--taqa-lavender, #f7f7ff);
+    padding: 40px 35px;
+    background: var(--taqa-card-bg, #fafafa);
   }
 
   /* left-align the header and help-panel content (boilerplate centers default
@@ -266,20 +266,33 @@
   color: #fff;
 }
 
+/* help panel heading: light-weight, larger, like the source (33px / weight 400) */
+.accordion-faq-container > .default-content-wrapper:last-child h5 {
+  margin: 0 0 24px;
+  color: var(--text-color, #1a1a1d);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
 /* help panel list: the source shows a single bullet per row, but the imported
    markup carries both a literal "•" paragraph and the <ul> disc marker. Drop
    the <ul> marker so only the single bullet remains, and lay each row out as
    bullet + link on one line. */
 .accordion-faq-container > .default-content-wrapper:last-child ul {
   list-style: none;
-  margin: 16px 0 0;
+  margin: 0;
   padding: 0;
 }
 
 .accordion-faq-container > .default-content-wrapper:last-child li {
   display: flex;
-  gap: 8px;
-  margin: 0 0 12px;
+  gap: 12px;
+  margin: 0 0 20px;
+  font-size: 18px;
+}
+
+.accordion-faq-container > .default-content-wrapper:last-child li:last-child {
+  margin-bottom: 0;
 }
 
 .accordion-faq-container > .default-content-wrapper:last-child li p {
@@ -288,6 +301,7 @@
 
 .accordion-faq-container > .default-content-wrapper:last-child li a {
   color: var(--link-color, #40476f);
+  font-size: 18px;
   text-decoration: none;
 }
 
