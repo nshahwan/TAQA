@@ -1,28 +1,24 @@
 /* carousel-tips: single-tile promo carousel (icon + heading + description +
-   LEARN MORE pill) with dot pagination, on a light-lavender panel.
-   Values extracted from taqadistribution.com computed styles. */
+   LEARN MORE pill) with dot pagination, on a mint-tinted panel with centred
+   content. Values extracted from taqadistribution.com computed styles. */
 
 .carousel-tips {
   position: relative;
   box-sizing: border-box;
   padding: 24px;
-  background-color: var(--taqa-lavender);
+  background-color: rgb(157 225 217 / 20%);
 }
 
 /* eyebrow heading ("ENERGY SAVING TIPS") inside the carousel panel, above the
-   slides — values from the source (28px / weight 500). */
+   slides — teal, uppercase, letter-spaced (source: 18px / weight 400). */
 .carousel-tips .carousel-tips-eyebrow {
   margin: 0 0 8px;
   padding: 0 16px;
-  color: var(--text-color, #1a1a1d);
-  font-size: 20px;
-  font-weight: 500;
-}
-
-@media (width >= 900px) {
-  .carousel-tips .carousel-tips-eyebrow {
-    font-size: 28px;
-  }
+  color: var(--taqa-teal, #0ab3a1);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 /* Slides track: one tile visible at a time, horizontal scroll-snap */
@@ -41,9 +37,9 @@
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  text-align: left;
+  text-align: center;
   box-sizing: border-box;
   padding: 8px 16px 16px;
 }
@@ -63,9 +59,10 @@
 .carousel-tips .carousel-tips-slide-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   max-width: 340px;
   margin: 0;
+  text-align: center;
 }
 
 /* Heading (first paragraph) */
@@ -73,7 +70,7 @@
   margin: 0;
   font-family: var(--body-font-family);
   font-size: 26px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.4;
   color: var(--text-color);
 }
@@ -96,9 +93,9 @@
   align-items: center;
   justify-content: center;
   padding: 15px 25px;
-  border: 1px solid var(--taqa-purple);
+  border: 1px solid var(--taqa-teal, #0ab3a1);
   border-radius: 80px;
-  background-color: var(--taqa-purple);
+  background-color: var(--taqa-teal, #0ab3a1);
   color: #fff;
   font-family: var(--body-font-family);
   font-size: 10px;
@@ -124,7 +121,7 @@
   margin: 20px 0 0;
   padding: 0 16px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 8px;
 }
 
