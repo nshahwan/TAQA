@@ -38,8 +38,17 @@ export default function decorate(block) {
 
   block.textContent = '';
 
-  const categories = [...new Set(items.map((it) => it.dataset.category).filter(Boolean))];
-  let activeCategory = 'all';
+  // Distinct category tabs, preserving authored order. Each row is tagged with
+  // exactly one category (the source shows an independent question set per tab,
+  // e.g. an "All" tab plus topic tabs), so the tabs ARE the categories — we do
+  // not synthesise an extra "show everything" pill.
+  const categories = [];
+  items.forEach((it) => {
+    const c = it.dataset.category;
+    if (c && !categories.includes(c)) categories.push(c);
+  });
+  // Default to the "All" tab when present, otherwise the first category.
+  let activeCategory = categories.includes('All') ? 'All' : (categories[0] || '');
   let visibleCount = PAGE_SIZE;
 
   const list = document.createElement('div');
@@ -52,10 +61,8 @@ export default function decorate(block) {
   loadMore.textContent = 'LOAD MORE';
 
   const render = () => {
-    const matches = items.filter(
-      (it) => activeCategory === 'all' || it.dataset.category === activeCategory,
-    );
-    items.forEach((it) => { it.hidden = true; });
+    const matches = items.filter((it) => it.dataset.category === activeCategory);
+    items.forEach((it) => { it.hidden = true; it.open = false; });
     matches.slice(0, visibleCount).forEach((it) => { it.hidden = false; });
     loadMore.hidden = matches.length <= visibleCount;
   };
@@ -65,7 +72,7 @@ export default function decorate(block) {
     render();
   });
 
-  // Category filter pills (only when categories were authored).
+  // Category filter pills — one per distinct category tab.
   if (categories.length) {
     const filters = document.createElement('div');
     filters.className = 'accordion-faq-filters';
@@ -86,7 +93,6 @@ export default function decorate(block) {
       return pill;
     };
 
-    filters.append(makePill('All', 'all'));
     categories.forEach((c) => filters.append(makePill(c, c)));
     block.append(filters);
   }
