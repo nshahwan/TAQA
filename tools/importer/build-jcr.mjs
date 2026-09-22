@@ -31,9 +31,12 @@ const BLOCK_CLASSES = [
 ];
 const titleCase = (name) => name.split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join(' ');
 
-// Convert a DOM element's innerHTML to mdast content nodes.
-function htmlToMdast(el) {
-  const hast = fromHtml(el.innerHTML, { fragment: true });
+// Convert HTML to mdast content nodes. `outer` controls whether the element
+// itself is included (outerHTML) or just its contents (innerHTML). Default
+// content that is a bare element (e.g. a heading <h2>) must use outerHTML, or
+// the wrapping tag — and thus the heading level — is lost.
+function htmlToMdast(el, outer = false) {
+  const hast = fromHtml(outer ? el.outerHTML : el.innerHTML, { fragment: true });
   const md = toMdast(hast);
   return md.children || [];
 }
@@ -100,9 +103,16 @@ bodyChildren.forEach((section) => {
     const blockName = BLOCK_CLASSES.find((b) => cls.includes(b));
     if (blockName) {
       pieces.push(serialize(blockToGridTable(node, blockName)));
+    } else if (node.tagName === 'DIV') {
+      // default-content wrapper: convert each child element with its own tag
+      // preserved (outerHTML), so headings stay headings.
+      [...node.children].forEach((child) => {
+        htmlToMdast(child, true).forEach((n) => pieces.push(serialize(n)));
+      });
     } else {
-      // default content wrapper: serialize each child mdast node
-      htmlToMdast(node).forEach((n) => pieces.push(serialize(n)));
+      // bare default-content element (heading / paragraph / list) directly in
+      // the section — convert with outerHTML so the tag (heading level) survives.
+      htmlToMdast(node, true).forEach((n) => pieces.push(serialize(n)));
     }
   });
   sectionChunks.push(pieces.join('\n\n'));
