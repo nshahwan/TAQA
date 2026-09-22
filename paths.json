@@ -10,7 +10,7 @@
     "/content/taqa/language-masters/ja:/ja",
     "/content/taqa/language-masters/de/:/de/",
     "/content/taqa/language-masters/de:/de",
-    "/content/taqa/help-and-support:/help-and-support",
+    "/content/taqa/en/help-and-support/transfer:/help-and-support/transfer",
     "/content/taqa/configuration:/.helix/config.json",
     "/content/taqa/metadata:/metadata.json",
     "/content/taqa/redirects:/redirects.json",
